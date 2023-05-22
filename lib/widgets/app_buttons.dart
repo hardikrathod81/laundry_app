@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laundry_app/core/app_colors.dart';
 
 // Widget appButton({required String value, required void Function()? onPressed}) {
 //   return ElevatedButton(
@@ -19,9 +20,20 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      child: Text(value),
+    return SizedBox(
+      height: 60,
+      width: 330,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            primary: AppColors.blue,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10))),
+        onPressed: onPressed,
+        child: Text(
+          value,
+          style: TextStyle(fontSize: 17),
+        ),
+      ),
     );
   }
 }

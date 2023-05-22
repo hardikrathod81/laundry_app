@@ -30,4 +30,9 @@ flutter:
         - asset: assets/fonts/Inter-SemiBold.ttf
           weight: 600
         - asset: assets/fonts/Inter-Bold.ttf
-          weight: 700
+          weight: 800
+  assets:
+    - assets/images/01.jpg
+    - assets/images/02.png
+    - assets/images/facebook.png
+    - assets/images/search.png
