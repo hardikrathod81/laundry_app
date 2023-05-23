@@ -22,10 +22,10 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60,
-      width: 330,
+      width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            primary: AppColors.blue,
+            backgroundColor: AppColors.blue,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10))),
         onPressed: onPressed,

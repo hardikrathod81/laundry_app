@@ -16,15 +16,17 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: Color(0xFFf2f5f8),
+        backgroundColor: const Color(0xFFffffff),
         body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           reverse: false,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 50),
               const Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  SizedBox(width: 260),
                   Image(
                       height: 50,
                       width: 30,
@@ -38,119 +40,123 @@ class RegisterPage extends StatelessWidget {
                         fontSize: 23,
                         fontFamily: 'Inter-Bold',
                         fontWeight: FontWeight.bold),
-                  )
+                  ),
+                  SizedBox(width: 20)
                 ],
               ),
               const SizedBox(height: 10),
-              const Row(
-                children: [
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Text(
-                    'Register',
-                    style: TextStyle(
-                        fontSize: 31,
-                        fontFamily: 'Inter-Bold',
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
+              const SizedBox(
+                width: 30,
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  'Register',
+                  style: TextStyle(
+                      fontSize: 31,
+                      fontFamily: 'Inter-Bold',
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               const SizedBox(height: 10),
-              const Row(
-                children: [
-                  SizedBox(width: 30),
-                  Text('Create new account for you'),
-                ],
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Text('Create new account for you'),
               ),
               const SizedBox(height: 30),
-              const Row(
-                children: [
-                  SizedBox(width: 30),
-                  Text(
-                    'Name',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-                  )
-                ],
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  'Name',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+                ),
               ),
               const SizedBox(height: 10),
-              SizedBox(
-                height: 50,
-                width: 340,
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5))),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: SizedBox(
+                  height: 50,
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                  ),
                 ),
               ),
               const SizedBox(height: 15),
-              const Row(
-                children: [
-                  SizedBox(width: 30),
-                  Text(
-                    'Email',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-                  )
-                ],
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  'Email',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+                ),
               ),
               const SizedBox(height: 10),
-              SizedBox(
-                height: 50,
-                width: 340,
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5))),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: SizedBox(
+                  height: 50,
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                  ),
                 ),
               ),
               const SizedBox(height: 15),
-              const Row(
-                children: [
-                  SizedBox(width: 30),
-                  Text(
-                    'Password',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-                  )
-                ],
+              const SizedBox(width: 30),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  'Password',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+                ),
               ),
               const SizedBox(height: 10),
-              SizedBox(
-                height: 50,
-                width: 340,
-                child: TextField(
-                  decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.remove_red_eye_outlined),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5))),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: SizedBox(
+                  height: 50,
+                  child: TextField(
+                    decoration: InputDecoration(
+                        suffixIcon: const Icon(Icons.remove_red_eye_outlined),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                  ),
                 ),
               ),
               const SizedBox(height: 40),
-              AppButton(
-                  value: 'Register',
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
-                  }),
-              const SizedBox(height: 30),
-              const SizedBox(height: 30),
-              const SizedBox(height: 100),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: AppButton(
+                    value: 'Register',
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    }),
+              ),
+              const SizedBox(height: 200),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(width: 80),
-                  Text('Already have an account?',
+                  const Text('Already have an account?',
                       style: TextStyle(
                           color: AppColors.gray, fontWeight: FontWeight.w600)),
-                  SizedBox(width: 5),
+                  const SizedBox(width: 5),
                   GestureDetector(
-                    onTap: () {},
-                    child: Text(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    },
+                    child: const Text(
                       'Login',
                       style: TextStyle(
                           color: AppColors.blue, fontWeight: FontWeight.bold),
                     ),
                   )
                 ],
-              )
+              ),
+              const SizedBox(height: 20)
             ],
           ),
         ));
