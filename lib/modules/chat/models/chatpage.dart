@@ -4,6 +4,10 @@ import 'package:laundry_app/core/app_colors.dart';
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
+  static MaterialPageRoute<void> route() {
+    return MaterialPageRoute(builder: (BuildContext context) => ChatPage());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +23,7 @@ class ChatPage extends StatelessWidget {
                 'Chats',
                 style: TextStyle(
                     color: AppColors.black,
-                    fontSize: 30,
+                    fontSize: 25,
                     fontWeight: FontWeight.w600),
               ),
             ),
@@ -63,47 +67,146 @@ class ChatPage extends StatelessWidget {
                 ],
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Container(
-                color: Colors.amberAccent,
-                height: 1000,
-                width: 400,
-                child: ListView.separated(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      minLeadingWidth: 4,
-                      leadingAndTrailingTextStyle:
-                          TextStyle(overflow: TextOverflow.ellipsis),
-                      leading: CircleAvatar(
-                        radius: 30,
-                        foregroundImage: AssetImage('assets/images/wash.jpg'),
-                      ),
-                      title: Text(
-                        'Lily Alesta',
-                        style: TextStyle(
-                            color: AppColors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      titleAlignment: ListTileTitleAlignment.top,
-                      subtitleTextStyle: TextStyle(
-                          height: -0.1,
-                          fontSize: 15,
-                          overflow: TextOverflow.ellipsis),
-                      subtitle: Text(
-                        'Hello,Hope you`re doing well,  ',
-                      ),
-                      trailing: Text(
-                        '12.35 pm',
-                      ),
-                    );
-                  },
-                  separatorBuilder: (context, index) {
-                    return Divider(thickness: 2);
-                  },
+            ListTile(
+              style: ListTileStyle.list,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 25),
+              onTap: () {
+                print('object');
+              },
+              onLongPress: () {},
+              leading: const SizedBox(
+                height: 60,
+                width: 60,
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/04.jpg'),
                 ),
+              ),
+              title: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Lily Alesta',
+                    style: TextStyle(
+                        height: -1,
+                        color: AppColors.black,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '12:30 pm',
+                    style: TextStyle(
+                      height: -1.8,
+                      color: AppColors.gray,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+              subtitleTextStyle: const TextStyle(
+                  fontSize: 14, overflow: TextOverflow.ellipsis),
+              subtitle: const Text(
+                'Hello,Hope you`re doing well,thanks for good ',
+              ),
+              horizontalTitleGap: 10,
+            ),
+            ListTile(
+              style: ListTileStyle.list,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 25),
+              onTap: () {
+                print('object');
+              },
+              onLongPress: () {},
+              leading: const SizedBox(
+                height: 60,
+                width: 60,
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/04.jpg'),
+                ),
+              ),
+              title: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Lily Alesta',
+                    style: TextStyle(
+                        height: -1,
+                        color: AppColors.black,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '12:30 pm',
+                    style: TextStyle(
+                      height: -1.8,
+                      color: AppColors.gray,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+              subtitleTextStyle: const TextStyle(
+                  fontSize: 14, overflow: TextOverflow.ellipsis),
+              subtitle: const Text(
+                'Hello,Hope you`re doing well,thanks for good ',
+              ),
+              horizontalTitleGap: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: Text(
+                'All message',
+                style: TextStyle(color: AppColors.gray),
+              ),
+            ),
+            SizedBox(
+              height: 500,
+              child: ListView.builder(
+                itemExtent: 80,
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    style: ListTileStyle.list,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 25),
+                    onTap: () {
+                      print('object');
+                    },
+                    onLongPress: () {},
+                    leading: const SizedBox(
+                      height: 60,
+                      width: 60,
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('assets/images/04.jpg'),
+                      ),
+                    ),
+                    title: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Lily Alesta',
+                          style: TextStyle(
+                              height: -1,
+                              color: AppColors.black,
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '12:30 pm',
+                          style: TextStyle(
+                            height: -1.8,
+                            color: AppColors.gray,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    subtitleTextStyle: const TextStyle(
+                        fontSize: 14, overflow: TextOverflow.ellipsis),
+                    subtitle: const Text(
+                      'Hello,Hope you`re doing well,thanks for good ',
+                    ),
+                    horizontalTitleGap: 10,
+                  );
+                },
               ),
             )
           ],

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
+import 'package:laundry_app/modules/chat/models/history.dart';
 import 'package:laundry_app/modules/chat/models/chatpage.dart';
+import 'package:laundry_app/modules/chat/models/history1.dart';
+import 'package:laundry_app/modules/chat/models/profile.dart';
+import 'package:laundry_app/order/orderpage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -61,7 +65,12 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white),
                 child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HistoryPage()));
+                    },
                     icon: const Icon(Icons.notifications_none)),
               )
             ],
@@ -124,7 +133,12 @@ class HomePage extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (Context) => const ProfilePage()));
+                          },
                           child: const Text(
                             'View Details',
                             style: TextStyle(
@@ -175,173 +189,187 @@ class HomePage extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 30),
-                  child: Container(
-                    height: 265,
-                    width: 230,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(
-                            image: AssetImage(
-                              'assets/images/wash.jpg',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => OrderPage1()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 30),
+                    child: Container(
+                      height: 265,
+                      width: 230,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          image: const DecorationImage(
+                              image: AssetImage(
+                                'assets/images/wash.jpg',
+                              ),
+                              alignment: Alignment(0, -1))),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 10),
+                          Align(
+                            alignment: const Alignment(-0.9, 0),
+                            child: SizedBox(
+                              height: 35,
+                              width: 70,
+                              child: ElevatedButton.icon(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(40)),
+                                      backgroundColor: const Color(0xFFf4f7fa)),
+                                  icon: const Icon(
+                                    Icons.star_purple500_outlined,
+                                    color: Colors.orange,
+                                    size: 15,
+                                  ),
+                                  label: const Text(
+                                    '5.0',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold),
+                                  )),
                             ),
-                            alignment: Alignment(0, -1))),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 10),
-                        Align(
-                          alignment: const Alignment(-0.9, 0),
-                          child: SizedBox(
-                            height: 35,
-                            width: 70,
-                            child: ElevatedButton.icon(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    backgroundColor: const Color(0xFFf4f7fa)),
-                                icon: const Icon(
-                                  Icons.star_purple500_outlined,
-                                  color: Colors.orange,
-                                  size: 15,
-                                ),
-                                label: const Text(
-                                  '5.0',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
-                                )),
                           ),
-                        ),
-                        const SizedBox(height: 160),
-                        const Padding(
-                            padding: EdgeInsets.only(left: 20),
-                            child: Text(
-                              'Roumah Laundry',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 17),
-                            )),
-                        const SizedBox(height: 10),
-                        const Row(
-                          children: [
-                            SizedBox(width: 20),
-                            Icon(
-                              Icons.location_on,
-                              color: AppColors.blue,
-                              size: 18,
-                            ),
-                            SizedBox(width: 2),
-                            Text(
-                              '250 m',
-                              style: TextStyle(
-                                  color: AppColors.gray,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(width: 50),
-                            Text(
-                              '\$0.5',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
-                            ),
-                            Text(
-                              '/pcs',
-                              style: TextStyle(
-                                  color: AppColors.gray,
-                                  fontWeight: FontWeight.w600),
-                            )
-                          ],
-                        )
-                      ],
+                          const SizedBox(height: 160),
+                          const Padding(
+                              padding: EdgeInsets.only(left: 20),
+                              child: Text(
+                                'Roumah Laundry',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 17),
+                              )),
+                          const SizedBox(height: 10),
+                          const Row(
+                            children: [
+                              SizedBox(width: 20),
+                              Icon(
+                                Icons.location_on,
+                                color: AppColors.blue,
+                                size: 18,
+                              ),
+                              SizedBox(width: 2),
+                              Text(
+                                '250 m',
+                                style: TextStyle(
+                                    color: AppColors.gray,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(width: 50),
+                              Text(
+                                '\$0.5',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                              Text(
+                                '/pcs',
+                                style: TextStyle(
+                                    color: AppColors.gray,
+                                    fontWeight: FontWeight.w600),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Container(
-                    height: 265,
-                    width: 230,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(
-                            image: AssetImage(
-                              'assets/images/wash.jpg',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => History1()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Container(
+                      height: 265,
+                      width: 230,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          image: const DecorationImage(
+                              image: AssetImage(
+                                'assets/images/wash.jpg',
+                              ),
+                              alignment: Alignment(0, -1))),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 10),
+                          Align(
+                            alignment: const Alignment(-0.9, 0),
+                            child: SizedBox(
+                              height: 35,
+                              width: 70,
+                              child: ElevatedButton.icon(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(40)),
+                                      backgroundColor: const Color(0xFFf4f7fa)),
+                                  icon: const Icon(
+                                    Icons.star_purple500_outlined,
+                                    color: Colors.orange,
+                                    size: 15,
+                                  ),
+                                  label: const Text(
+                                    '5.0',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold),
+                                  )),
                             ),
-                            alignment: Alignment(0, -1))),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 10),
-                        Align(
-                          alignment: const Alignment(-0.9, 0),
-                          child: SizedBox(
-                            height: 35,
-                            width: 70,
-                            child: ElevatedButton.icon(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    backgroundColor: const Color(0xFFf4f7fa)),
-                                icon: const Icon(
-                                  Icons.star_purple500_outlined,
-                                  color: Colors.orange,
-                                  size: 15,
-                                ),
-                                label: const Text(
-                                  '5.0',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
-                                )),
                           ),
-                        ),
-                        const SizedBox(height: 160),
-                        const Padding(
-                            padding: EdgeInsets.only(left: 20),
-                            child: Text(
-                              'Roumah Laundry',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 17),
-                            )),
-                        const SizedBox(height: 10),
-                        const Row(
-                          children: [
-                            SizedBox(width: 20),
-                            Icon(
-                              Icons.location_on,
-                              color: AppColors.blue,
-                              size: 18,
-                            ),
-                            SizedBox(width: 2),
-                            Text(
-                              '250 m',
-                              style: TextStyle(
-                                  color: AppColors.gray,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(width: 50),
-                            Text(
-                              '\$0.5',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
-                            ),
-                            Text(
-                              '/pcs',
-                              style: TextStyle(
-                                  color: AppColors.gray,
-                                  fontWeight: FontWeight.w600),
-                            )
-                          ],
-                        )
-                      ],
+                          const SizedBox(height: 160),
+                          const Padding(
+                              padding: EdgeInsets.only(left: 20),
+                              child: Text(
+                                'Roumah Laundry',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 17),
+                              )),
+                          const SizedBox(height: 10),
+                          const Row(
+                            children: [
+                              SizedBox(width: 20),
+                              Icon(
+                                Icons.location_on,
+                                color: AppColors.blue,
+                                size: 18,
+                              ),
+                              SizedBox(width: 2),
+                              Text(
+                                '250 m',
+                                style: TextStyle(
+                                    color: AppColors.gray,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(width: 50),
+                              Text(
+                                '\$0.5',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                              Text(
+                                '/pcs',
+                                style: TextStyle(
+                                    color: AppColors.gray,
+                                    fontWeight: FontWeight.w600),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
