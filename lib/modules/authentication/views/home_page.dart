@@ -4,7 +4,10 @@ import 'package:laundry_app/modules/chat/models/history.dart';
 import 'package:laundry_app/modules/chat/models/chatpage.dart';
 import 'package:laundry_app/modules/chat/models/history1.dart';
 import 'package:laundry_app/modules/chat/models/profile.dart';
+import 'package:laundry_app/order/checkout.dart';
 import 'package:laundry_app/order/orderpage.dart';
+import 'package:laundry_app/order/trackorder.dart';
+import 'package:laundry_app/payment/paymentpage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -191,8 +194,10 @@ class HomePage extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => OrderPage1()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CheckoutPage()));
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 30),
@@ -373,8 +378,14 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                TrackOrderPage()));
+                  },
                   child: Container(
                     height: 265,
                     width: 230,

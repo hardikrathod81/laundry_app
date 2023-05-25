@@ -7,7 +7,7 @@ class History1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFf5f8fa),
+      backgroundColor: const Color(0xFFf5f8fa),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -23,9 +23,10 @@ class History1 extends StatelessWidget {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
             child: Text(
               'Let`s do laundry transactions now and feel the convenience',
+              textAlign: TextAlign.center,
               style: TextStyle(
                   color: AppColors.black,
                   fontWeight: FontWeight.w300,

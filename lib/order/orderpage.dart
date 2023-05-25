@@ -64,13 +64,13 @@ class OrderPage1 extends StatelessWidget {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
           ),
-          SizedBox(height: 200),
+          const SizedBox(height: 200),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   '#2134587643',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                 ),
