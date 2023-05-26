@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  dash: ^1.0.5
 
 dev_dependencies:
   flutter_test:
@@ -46,3 +47,9 @@ flutter:
     - assets/images/paypal.png
     - assets/images/done.png
     - assets/images/trackorder.png
+    - assets/images/process1.png
+    - assets/images/process2.png
+    - assets/images/process3.png
+    - assets/images/icon1.png
+    - assets/images/icon2.png
+    - assets/images/icon3.png

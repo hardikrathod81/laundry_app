@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/modules/chat/models/history.dart';
+import 'package:laundry_app/modules/history/history.dart';
 import 'package:laundry_app/modules/chat/models/chatpage.dart';
-import 'package:laundry_app/modules/chat/models/history1.dart';
-import 'package:laundry_app/modules/chat/models/profile.dart';
-import 'package:laundry_app/order/checkout.dart';
-import 'package:laundry_app/order/orderpage.dart';
-import 'package:laundry_app/order/trackorder.dart';
-import 'package:laundry_app/payment/paymentpage.dart';
+import 'package:laundry_app/modules/history/history1.dart';
+import 'package:laundry_app/modules/profile/profile.dart';
+import 'package:laundry_app/modules/order/checkout.dart';
+
+import 'package:laundry_app/modules/order/process/trackorder.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  static MaterialPageRoute<void> route() {
-    return MaterialPageRoute(
-        builder: (BuildContext context) => const HomePage());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -565,10 +559,10 @@ class HomePage extends StatelessWidget {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => ChatPage()));
           },
-          type: BottomNavigationBarType.shifting,
-          iconSize: 30,
+          type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,
-          selectedIconTheme: const IconThemeData(color: AppColors.blue),
+          selectedIconTheme:
+              const IconThemeData(color: AppColors.blue, size: 30),
           selectedItemColor: AppColors.blue,
           showUnselectedLabels: true,
           unselectedItemColor: AppColors.black,

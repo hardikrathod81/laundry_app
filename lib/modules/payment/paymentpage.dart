@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/payment/paymentdone.dart';
+import 'package:laundry_app/modules/payment/paymentdone.dart';
+
 import 'package:laundry_app/widgets/app_buttons.dart';
 
 class PaymentPage1 extends StatelessWidget {
@@ -331,7 +332,7 @@ class PaymentPage1 extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 30),
                   child: AppButton(
-                      value: 'Pay 9 (\$2.0)',
+                      value: 'Pay (\$2.0)',
                       onPressed: () {
                         Navigator.push(
                             context,

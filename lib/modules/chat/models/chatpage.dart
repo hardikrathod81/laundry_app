@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
+import 'package:laundry_app/core/app_widget.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
@@ -13,6 +14,7 @@ class ChatPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFf2f5f8),
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -67,90 +69,8 @@ class ChatPage extends StatelessWidget {
                 ],
               ),
             ),
-            ListTile(
-              style: ListTileStyle.list,
-              contentPadding: const EdgeInsets.symmetric(horizontal: 25),
-              onTap: () {
-                print('object');
-              },
-              onLongPress: () {},
-              leading: const SizedBox(
-                height: 60,
-                width: 60,
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/04.jpg'),
-                ),
-              ),
-              title: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Lily Alesta',
-                    style: TextStyle(
-                        height: -1,
-                        color: AppColors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    '12:30 pm',
-                    style: TextStyle(
-                      height: -1.8,
-                      color: AppColors.gray,
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
-              ),
-              subtitleTextStyle: const TextStyle(
-                  fontSize: 14, overflow: TextOverflow.ellipsis),
-              subtitle: const Text(
-                'Hello,Hope you`re doing well,thanks for good ',
-              ),
-              horizontalTitleGap: 10,
-            ),
-            ListTile(
-              style: ListTileStyle.list,
-              contentPadding: const EdgeInsets.symmetric(horizontal: 25),
-              onTap: () {
-                print('object');
-              },
-              onLongPress: () {},
-              leading: const SizedBox(
-                height: 60,
-                width: 60,
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/04.jpg'),
-                ),
-              ),
-              title: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Lily Alesta',
-                    style: TextStyle(
-                        height: -1,
-                        color: AppColors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    '12:30 pm',
-                    style: TextStyle(
-                      height: -1.8,
-                      color: AppColors.gray,
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
-              ),
-              subtitleTextStyle: const TextStyle(
-                  fontSize: 14, overflow: TextOverflow.ellipsis),
-              subtitle: const Text(
-                'Hello,Hope you`re doing well,thanks for good ',
-              ),
-              horizontalTitleGap: 10,
-            ),
+            const Listtile1(),
+            const Listtile1(),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Text(
@@ -164,48 +84,7 @@ class ChatPage extends StatelessWidget {
                 itemExtent: 80,
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    style: ListTileStyle.list,
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 25),
-                    onTap: () {
-                      print('object');
-                    },
-                    onLongPress: () {},
-                    leading: const SizedBox(
-                      height: 60,
-                      width: 60,
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/04.jpg'),
-                      ),
-                    ),
-                    title: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Lily Alesta',
-                          style: TextStyle(
-                              height: -1,
-                              color: AppColors.black,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          '12:30 pm',
-                          style: TextStyle(
-                            height: -1.8,
-                            color: AppColors.gray,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    subtitleTextStyle: const TextStyle(
-                        fontSize: 14, overflow: TextOverflow.ellipsis),
-                    subtitle: const Text(
-                      'Hello,Hope you`re doing well,thanks for good ',
-                    ),
-                    horizontalTitleGap: 10,
-                  );
+                  return const Listtile1();
                 },
               ),
             )

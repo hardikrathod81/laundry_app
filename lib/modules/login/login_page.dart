@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/widgets/app_buttons.dart';
 import 'package:laundry_app/modules/authentication/authentication.dart';
+import 'package:laundry_app/widgets/app_buttons.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
 
   static MaterialPageRoute<void> route() {
     return MaterialPageRoute(
-      builder: (BuildContext context) => const RegisterPage(),
+      builder: (BuildContext context) => const LoginPage(),
     );
   }
 
@@ -18,8 +18,6 @@ class RegisterPage extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         backgroundColor: const Color(0xFFffffff),
         body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          reverse: false,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -41,17 +39,14 @@ class RegisterPage extends StatelessWidget {
                         fontFamily: 'Inter-Bold',
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(width: 20)
+                  SizedBox(width: 30)
                 ],
               ),
               const SizedBox(height: 10),
-              const SizedBox(
-                width: 30,
-              ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
-                  'Register',
+                  'Let\'s get started',
                   style: TextStyle(
                       fontSize: 31,
                       fontFamily: 'Inter-Bold',
@@ -61,29 +56,9 @@ class RegisterPage extends StatelessWidget {
               const SizedBox(height: 10),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
-                child: Text('Create new account for you'),
+                child: Text('Login into your account'),
               ),
               const SizedBox(height: 30),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
-                child: Text(
-                  'Name',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-                ),
-              ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: SizedBox(
-                  height: 50,
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5))),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
@@ -104,7 +79,6 @@ class RegisterPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
-              const SizedBox(width: 30),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
@@ -125,38 +99,123 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 10),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'Forgot Password?',
+                    style: TextStyle(
+                        color: AppColors.blue,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w800),
+                  ),
+                  SizedBox(width: 30)
+                ],
+              ),
               const SizedBox(height: 40),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: AppButton(
-                    value: 'Register',
+                    value: 'Login',
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((BuildContext context) => HomePage())));
                     }),
               ),
-              const SizedBox(height: 200),
+              const SizedBox(height: 30),
+              const Center(
+                child: Text(
+                  'Or login with account',
+                  style: TextStyle(
+                      color: AppColors.gray,
+                      fontSize: 13,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+              const SizedBox(height: 30),
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                          height: 50,
+                          width: 160,
+                          child: Row(
+                            children: [
+                              SizedBox(width: 35),
+                              Image.asset(
+                                'assets/images/search.png',
+                                height: 14,
+                                width: 30,
+                              ),
+                              Text(
+                                'Google',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                              border: Border.all(width: 0.3),
+                              borderRadius: BorderRadius.circular(10))),
+                    ),
+                    const SizedBox(width: 20),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                          height: 50,
+                          width: 160,
+                          child: Row(
+                            children: [
+                              SizedBox(width: 27),
+                              Image.asset(
+                                'assets/images/facebook.png',
+                                height: 15,
+                                width: 30,
+                              ),
+                              Text(
+                                'Facebook',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                              border: Border.all(width: 0.3),
+                              borderRadius: BorderRadius.circular(10))),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 140),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Already have an account?',
+                  const Text('Dont\'t have an account?',
                       style: TextStyle(
                           color: AppColors.gray, fontWeight: FontWeight.w600)),
                   const SizedBox(width: 5),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterPage()));
                     },
                     child: const Text(
-                      'Login',
+                      'Register',
                       style: TextStyle(
                           color: AppColors.blue, fontWeight: FontWeight.bold),
                     ),
                   )
                 ],
               ),
-              const SizedBox(height: 20)
+              const SizedBox(height: 20),
             ],
           ),
         ));

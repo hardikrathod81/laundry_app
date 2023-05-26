@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:laundry_app/core/app_checkicon.dart';
 import 'package:laundry_app/core/app_colors.dart';
+import 'package:laundry_app/core/app_widget.dart';
 
-class OrderPage1 extends StatelessWidget {
-  const OrderPage1({super.key});
+class ProcessPage4 extends StatelessWidget {
+  const ProcessPage4({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,29 +44,81 @@ class OrderPage1 extends StatelessWidget {
               ],
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: CircleAvatar(
-              foregroundColor: Color(0xFFf5f8fa),
-              radius: 50,
-              foregroundImage: AssetImage('assets/images/05.png'),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30,
             ),
+            child: Row(children: [
+              const CheckIcon(),
+              const BlueLine(),
+              const CheckIcon(),
+              const BlueLine(),
+              const CheckIcon(),
+              const BlueLine(),
+              Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    border: Border.all(color: AppColors.blue, width: 2)),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/icon3.png')),
+                        borderRadius: BorderRadius.circular(40)),
+                  ),
+                ),
+              ),
+            ]),
           ),
           const Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: Text(
-              'Your clothes are still washed.',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Washing',
+                  style: TextStyle(
+                      fontSize: 11,
+                      color: AppColors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Text(
+                    'Cleaning',
+                    style: TextStyle(
+                        fontSize: 11,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Text(
+                    'Dying',
+                    style: TextStyle(
+                        fontSize: 11,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: Text(
+                    'Deliver',
+                    style: TextStyle(
+                        fontSize: 11,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
             ),
           ),
-          const Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-            child: Text(
-              'will be finished soon.',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-          ),
-          const SizedBox(height: 200),
+          const SizedBox(height: 50),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Row(
@@ -153,7 +207,7 @@ class OrderPage1 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 40),
                   child: Text(
-                    'Finish in 2 days',
+                    'Arrive in 30 Minutes ',
                     style: TextStyle(
                         color: AppColors.black,
                         fontWeight: FontWeight.w900,

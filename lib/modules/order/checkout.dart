@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/payment/paymentpage.dart';
+import 'package:laundry_app/modules/payment/paymentpage.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
 
 class CheckoutPage extends StatelessWidget {
