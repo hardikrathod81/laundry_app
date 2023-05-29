@@ -1,3 +1,2 @@
-export '../login/login_page.dart';
-export '../login/register_page.dart';
-export '../home/home_page.dart';
+export 'views/login_page.dart';
+export 'views/register_page.dart';

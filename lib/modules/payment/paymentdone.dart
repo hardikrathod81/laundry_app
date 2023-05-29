@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/modules/authentication/authentication.dart';
+import 'package:laundry_app/modules/home/views/home_page.dart';
 import 'package:laundry_app/modules/order/process/process1.dart';
 
 class PaymentDone extends StatelessWidget {
@@ -76,10 +76,7 @@ class PaymentDone extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => HomePage()));
+                      Navigator.push(context, HomePage.route());
                     },
                     child: Text(
                       'Back home',

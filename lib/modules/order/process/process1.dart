@@ -94,7 +94,7 @@ class OrderPage1 extends StatelessWidget {
                 width: 40,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
-                    border: Border.all(color: AppColors.lightgray, width: 2)),
+                    border: Border.all(color: AppColors.lightGray, width: 2)),
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Container(
@@ -111,7 +111,7 @@ class OrderPage1 extends StatelessWidget {
                 width: 40,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
-                    border: Border.all(color: AppColors.lightgray, width: 2)),
+                    border: Border.all(color: AppColors.lightGray, width: 2)),
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Container(
@@ -128,7 +128,7 @@ class OrderPage1 extends StatelessWidget {
                 width: 40,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
-                    border: Border.all(color: AppColors.lightgray, width: 2)),
+                    border: Border.all(color: AppColors.lightGray, width: 2)),
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Container(
@@ -159,7 +159,7 @@ class OrderPage1 extends StatelessWidget {
                     'Cleaning',
                     style: TextStyle(
                         fontSize: 11,
-                        color: AppColors.lightgray,
+                        color: AppColors.lightGray,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -169,7 +169,7 @@ class OrderPage1 extends StatelessWidget {
                     'Dying',
                     style: TextStyle(
                         fontSize: 11,
-                        color: AppColors.lightgray,
+                        color: AppColors.lightGray,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -179,7 +179,7 @@ class OrderPage1 extends StatelessWidget {
                     'Deliver',
                     style: TextStyle(
                         fontSize: 11,
-                        color: AppColors.lightgray,
+                        color: AppColors.lightGray,
                         fontWeight: FontWeight.bold),
                   ),
                 )

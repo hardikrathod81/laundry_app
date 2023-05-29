@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/modules/authentication/authentication.dart';
+import 'package:laundry_app/modules/home/home.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
 
 class LoginPage extends StatelessWidget {
@@ -117,13 +118,11 @@ class LoginPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: AppButton(
-                    value: 'Login',
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: ((BuildContext context) => HomePage())));
-                    }),
+                  value: 'Login',
+                  onPressed: () {
+                    Navigator.push(context, HomePage.route());
+                  },
+                ),
               ),
               const SizedBox(height: 30),
               const Center(

@@ -100,7 +100,7 @@ class ProcessPage2 extends StatelessWidget {
                 width: 40,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
-                    border: Border.all(color: AppColors.lightgray, width: 2)),
+                    border: Border.all(color: AppColors.lightGray, width: 2)),
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Container(
@@ -117,7 +117,7 @@ class ProcessPage2 extends StatelessWidget {
                 width: 40,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
-                    border: Border.all(color: AppColors.lightgray, width: 2)),
+                    border: Border.all(color: AppColors.lightGray, width: 2)),
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Container(
@@ -158,7 +158,7 @@ class ProcessPage2 extends StatelessWidget {
                     'Dying',
                     style: TextStyle(
                         fontSize: 11,
-                        color: AppColors.lightgray,
+                        color: AppColors.lightGray,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -168,7 +168,7 @@ class ProcessPage2 extends StatelessWidget {
                     'Deliver',
                     style: TextStyle(
                         fontSize: 11,
-                        color: AppColors.lightgray,
+                        color: AppColors.lightGray,
                         fontWeight: FontWeight.bold),
                   ),
                 )

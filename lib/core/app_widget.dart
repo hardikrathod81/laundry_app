@@ -59,7 +59,7 @@ class Divide extends StatelessWidget {
       '-------',
       style: TextStyle(
           fontSize: 17,
-          color: AppColors.lightgray,
+          color: AppColors.lightGray,
           fontWeight: FontWeight.w100),
     );
   }
