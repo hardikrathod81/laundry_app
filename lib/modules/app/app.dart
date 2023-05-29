@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_fonts.dart';
-import 'package:laundry_app/modules/home/views/root_page.dart';
 import 'package:laundry_app/modules/onboarding/onboarding.dart';
 
 class LaundryApp extends StatelessWidget {
@@ -11,8 +10,7 @@ class LaundryApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: AppFonts.fontFamily),
-      // home: const OnboardingPage(),
-      home: const RootPage(),
+      home: const OnboardingPage(),
     );
   }
 }

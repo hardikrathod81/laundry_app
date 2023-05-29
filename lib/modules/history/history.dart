@@ -4,10 +4,10 @@ import 'package:laundry_app/core/app_colors.dart';
 class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});
 
-  static MaterialPageRoute<void> route() {
-    return MaterialPageRoute(
-        builder: (BuildContext context) => const HistoryPage());
-  }
+  // static MaterialPageRoute<void> route() {
+  //   return MaterialPageRoute(
+  //       builder: (BuildContext context) => const HistoryPage());
+  // }
 
   @override
   Widget build(BuildContext context) {

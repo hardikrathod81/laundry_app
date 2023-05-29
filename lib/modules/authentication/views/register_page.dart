@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/modules/home/views/home_page.dart';
+import 'package:laundry_app/modules/home/views/root_page.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
-import 'package:laundry_app/modules/authentication/authentication.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -124,10 +123,15 @@ class RegisterPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: AppButton(
-                    value: 'Register',
-                    onPressed: () {
-                      Navigator.push(context, HomePage.route());
-                    }),
+                  value: 'Register',
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      RootPage.route(),
+                      (route) => false,
+                    );
+                  },
+                ),
               ),
               const SizedBox(height: 200),
               Row(
@@ -139,8 +143,7 @@ class RegisterPage extends StatelessWidget {
                   const SizedBox(width: 5),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()));
+                      Navigator.pop(context);
                     },
                     child: const Text(
                       'Login',

@@ -76,7 +76,7 @@ class PaymentDone extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
-                      Navigator.push(context, HomePage.route());
+                      // Navigator.push(context, HomePage.route());
                     },
                     child: Text(
                       'Back home',

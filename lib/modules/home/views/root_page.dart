@@ -8,6 +8,12 @@ import 'package:laundry_app/modules/profile/profile.dart';
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
 
+  static MaterialPageRoute<void> route() {
+    return MaterialPageRoute(
+      builder: (BuildContext context) => const RootPage(),
+    );
+  }
+
   @override
   State<RootPage> createState() => _RootPageState();
 }

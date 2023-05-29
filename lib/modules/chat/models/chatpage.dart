@@ -5,9 +5,9 @@ import 'package:laundry_app/core/app_widget.dart';
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
-  static MaterialPageRoute<void> route() {
-    return MaterialPageRoute(builder: (BuildContext context) => ChatPage());
-  }
+  // static MaterialPageRoute<void> route() {
+  //   return MaterialPageRoute(builder: (BuildContext context) => ChatPage());
+  // }
 
   @override
   Widget build(BuildContext context) {

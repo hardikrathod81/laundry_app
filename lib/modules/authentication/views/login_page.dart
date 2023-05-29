@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/modules/authentication/authentication.dart';
-import 'package:laundry_app/modules/home/home.dart';
+import 'package:laundry_app/modules/home/views/root_page.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
 
 class LoginPage extends StatelessWidget {
@@ -120,7 +120,11 @@ class LoginPage extends StatelessWidget {
                 child: AppButton(
                   value: 'Login',
                   onPressed: () {
-                    Navigator.push(context, HomePage.route());
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      RootPage.route(),
+                      (route) => false,
+                    );
                   },
                 ),
               ),
