@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/modules/history/history.dart';
-import 'package:laundry_app/modules/chat/models/chatpage.dart';
 import 'package:laundry_app/modules/history/history1.dart';
 import 'package:laundry_app/modules/profile/profile.dart';
 import 'package:laundry_app/modules/order/checkout.dart';
-
 import 'package:laundry_app/modules/order/process/trackorder.dart';
 
 class HomePage extends StatelessWidget {
@@ -559,45 +557,6 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 0,
-          onTap: (value) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => ChatPage()));
-          },
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.white,
-          selectedIconTheme:
-              const IconThemeData(color: AppColors.blue, size: 30),
-          selectedItemColor: AppColors.blue,
-          showUnselectedLabels: true,
-          unselectedItemColor: AppColors.black,
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_outlined,
-                  color: Colors.black,
-                ),
-                label: 'Home'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.chat_outlined,
-                  color: Colors.black,
-                ),
-                label: 'Chat'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.shopping_bag_outlined,
-                  color: Colors.black,
-                ),
-                label: 'History'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person,
-                  color: Colors.black,
-                ),
-                label: 'Profile'),
-          ]),
     );
   }
 }
