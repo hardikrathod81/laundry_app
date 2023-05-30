@@ -21,74 +21,77 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Row(
-                children: [
-                  const SizedBox(width: 30),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Current Location',
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: AppColors.gray,
-                          fontWeight: FontWeight.w300,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Current Location',
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: AppColors.gray,
+                            fontWeight: FontWeight.w300,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 5),
-                      GestureDetector(
-                        onTap: () {},
-                        child: const Row(
-                          children: [
-                            Icon(
-                              Icons.location_on,
-                              color: AppColors.blue,
-                              size: 19,
-                            ),
-                            SizedBox(width: 4),
-                            Text(
-                              'Semarang,East java',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(width: 120),
-                  Container(
-                    margin: const EdgeInsets.all(8),
-                    height: 50,
-                    width: 45,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 0.1),
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.notifications_none),
+                        const SizedBox(height: 5),
+                        GestureDetector(
+                          onTap: () {},
+                          child: const Row(
+                            children: [
+                              Icon(
+                                Icons.location_on,
+                                color: AppColors.blue,
+                                size: 19,
+                              ),
+                              SizedBox(width: 4),
+                              Text(
+                                'Semarang,East java',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
                     ),
-                  )
-                ],
+                    Container(
+                      height: 50,
+                      width: 45,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 0.1),
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.notifications_none),
+                      ),
+                    )
+                  ],
+                ),
               ),
               const SizedBox(height: 20),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
-                margin: const EdgeInsets.symmetric(horizontal: 25),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const TextField(
-                  cursorHeight: 20,
-                  decoration: InputDecoration(
-                    hintText: 'Find the nearest laundromat',
-                    hintStyle: TextStyle(fontSize: 15, color: AppColors.gray),
-                    border: InputBorder.none,
-                    icon: Icon(
-                      Icons.search,
-                      size: 35,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const TextField(
+                    cursorHeight: 20,
+                    decoration: InputDecoration(
+                      hintText: 'Find the nearest laundromat',
+                      hintStyle: TextStyle(fontSize: 15, color: AppColors.gray),
+                      border: InputBorder.none,
+                      icon: Icon(
+                        Icons.search,
+                        size: 35,
+                      ),
                     ),
                   ),
                 ),
@@ -188,7 +191,7 @@ class HomePage extends StatelessWidget {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  itemCount: 3,
+                  itemCount: 4,
                   padding: const EdgeInsets.only(right: 30),
                   itemBuilder: (context, index) {
                     return const LaundryItemWidget();
@@ -237,7 +240,7 @@ class LaundryItemWidget extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                     Positioned(
-                      right: 8,
+                      left: 8,
                       top: 8,
                       child: SizedBox(
                         height: 35,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/modules/chat/models/chatpage.dart';
-import 'package:laundry_app/modules/history/history.dart';
+import 'package:laundry_app/modules/chat/models/views/chatpage.dart';
+import 'package:laundry_app/modules/history/views/history.dart';
 import 'package:laundry_app/modules/home/home.dart';
 import 'package:laundry_app/modules/profile/profile.dart';
 
@@ -10,8 +10,8 @@ class RootPage extends StatefulWidget {
 
   static MaterialPageRoute<void> route() {
     return MaterialPageRoute(
-      builder: (BuildContext context) => const RootPage(),
-    );
+        builder: (BuildContext context) => const RootPage(),
+        settings: const RouteSettings(name: 'RootPage'));
   }
 
   @override

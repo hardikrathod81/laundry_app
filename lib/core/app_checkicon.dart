@@ -13,12 +13,12 @@ class CheckIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(40),
       ),
       child: Container(
-        child: Icon(
+        decoration: BoxDecoration(
+            color: AppColors.blue, borderRadius: BorderRadius.circular(40)),
+        child: const Icon(
           Icons.check,
           color: Colors.white,
         ),
-        decoration: BoxDecoration(
-            color: AppColors.blue, borderRadius: BorderRadius.circular(40)),
       ),
     );
   }

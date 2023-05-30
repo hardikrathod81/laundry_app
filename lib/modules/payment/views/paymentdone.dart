@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/modules/home/views/home_page.dart';
+import 'package:laundry_app/modules/home/home.dart';
 import 'package:laundry_app/modules/order/process/process1.dart';
 
 class PaymentDone extends StatelessWidget {
@@ -13,14 +13,14 @@ class PaymentDone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.blue,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+      body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 80, bottom: 40),
+              padding: const EdgeInsets.symmetric(vertical: 40),
               child: Image.asset('assets/images/done.png'),
             ),
             const Text(
@@ -51,10 +51,11 @@ class PaymentDone extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => OrderPage1()));
+                      Navigator.pushAndRemoveUntil(context,
+                          MaterialPageRoute(builder: (context) => OrderPage1()),
+                          (route) {
+                        return route.isFirst;
+                      });
                     },
                     child: Text(
                       'Details order',
@@ -76,7 +77,17 @@ class PaymentDone extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
-                      // Navigator.push(context, HomePage.route());
+                      // Navigator.of(context)
+                      //     .popUntil(ModalRoute.withName('RootPage'));
+                      Navigator.popUntil(context, (route) {
+                        // return route.isFirst;
+                        return route.settings.name == 'RootPage';
+                      });
+                      // int index = 0;
+                      // Navigator.of(context).popUntil((route) {
+                      //   index += 1;
+                      //   return index == 3;
+                      // });
                     },
                     child: Text(
                       'Back home',
