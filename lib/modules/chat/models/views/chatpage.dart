@@ -5,14 +5,14 @@ import 'package:laundry_app/core/app_widget.dart';
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
-  // static MaterialPageRoute<void> route() {
-  //   return MaterialPageRoute(builder: (BuildContext context) => ChatPage());
-  // }
+  static MaterialPageRoute<void> route() {
+    return MaterialPageRoute(builder: (BuildContext context) => ChatPage());
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFf2f5f8),
+      backgroundColor: AppColors.whiteLight,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,8 +75,8 @@ class ChatPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const Listtile1(),
-                    const Listtile1(),
+                    const ListtileContainer(),
+                    const ListtileContainer(),
                     const Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -92,7 +92,7 @@ class ChatPage extends StatelessWidget {
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
-                          return const Listtile1();
+                          return const ListtileContainer();
                         },
                       ),
                     ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/modules/chat/models/views/chatpage.dart';
-import 'package:laundry_app/modules/history/views/history.dart';
+import 'package:laundry_app/modules/history/views/history_page.dart';
 import 'package:laundry_app/modules/home/home.dart';
 import 'package:laundry_app/modules/profile/profile.dart';
 

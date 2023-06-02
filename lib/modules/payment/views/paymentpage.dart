@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
+import 'package:laundry_app/core/app_images.dart';
 import 'package:laundry_app/modules/payment/views/paymentdone.dart';
 
 import 'package:laundry_app/widgets/app_buttons.dart';
 
-class PaymentPage1 extends StatelessWidget {
-  const PaymentPage1({super.key});
+class PaymentPage extends StatelessWidget {
+  const PaymentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,7 @@ class PaymentPage1 extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    height: 200,
+                    height: MediaQuery.sizeOf(context).height * 0.25,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
@@ -193,7 +194,7 @@ class PaymentPage1 extends StatelessWidget {
                                         padding: EdgeInsets.all(10.0),
                                         child: Image(
                                             image: AssetImage(
-                                                'assets/images/apple.png')),
+                                                AppImages.appleLogo)),
                                       )),
                                   const Padding(
                                     padding: EdgeInsets.only(left: 20),
@@ -245,7 +246,7 @@ class PaymentPage1 extends StatelessWidget {
                                         padding: EdgeInsets.all(8.0),
                                         child: Image(
                                             image: AssetImage(
-                                                'assets/images/Mastercard.png')),
+                                                AppImages.mastercardLogo)),
                                       )),
                                   const Padding(
                                     padding: EdgeInsets.only(left: 20),
@@ -288,7 +289,7 @@ class PaymentPage1 extends StatelessWidget {
                                         padding: EdgeInsets.all(10.0),
                                         child: Image(
                                             image: AssetImage(
-                                                'assets/images/paypal.png')),
+                                                AppImages.paypalLogo)),
                                       )),
                                   const Padding(
                                     padding: EdgeInsets.only(left: 20),

@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
+import 'package:laundry_app/core/app_images.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
-  // static MaterialPageRoute<void> route() {
-  //   return MaterialPageRoute(builder: (BuildContext context) => ProfilePage());
-  // }
+  static MaterialPageRoute<void> route() {
+    return MaterialPageRoute(builder: (BuildContext context) => ProfilePage());
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xFFf2f5f8),
+      backgroundColor: AppColors.whiteLight,
       body: SafeArea(
         child: Column(
           children: [
-            Row(
+            const Row(
               children: [
                 Padding(
                   padding:
@@ -35,7 +36,7 @@ class ProfilePage extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               child: CircleAvatar(
                 radius: 50,
-                foregroundImage: AssetImage('assets/images/04.jpg'),
+                foregroundImage: AssetImage(AppImages.profileImage),
               ),
             ),
             const Text(
@@ -46,7 +47,7 @@ class ProfilePage extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             const Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.symmetric(vertical: 10),
               child: Text(
                 "ID : 2198657",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),

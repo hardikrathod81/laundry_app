@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_checkicon.dart';
 import 'package:laundry_app/core/app_colors.dart';
+import 'package:laundry_app/core/app_images.dart';
 import 'package:laundry_app/core/app_widget.dart';
-import 'package:laundry_app/modules/order/process/trackorder.dart';
+import 'package:laundry_app/modules/order/process/trackorder_page.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
 
 class ProcessPage4 extends StatelessWidget {
@@ -74,7 +75,7 @@ class ProcessPage4 extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/images/icon3.png')),
+                                image: AssetImage(AppImages.processedimage3)),
                             borderRadius: BorderRadius.circular(40)),
                       ),
                     ),
@@ -82,8 +83,7 @@ class ProcessPage4 extends StatelessWidget {
                 ]),
               ),
               const Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -95,7 +95,7 @@ class ProcessPage4 extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 10),
+                      padding: EdgeInsets.only(right: 10),
                       child: Text(
                         'Cleaning',
                         style: TextStyle(
@@ -105,7 +105,7 @@ class ProcessPage4 extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 10),
+                      padding: EdgeInsets.only(right: 10),
                       child: Text(
                         'Dying',
                         style: TextStyle(
@@ -115,7 +115,7 @@ class ProcessPage4 extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 8),
+                      padding: EdgeInsets.only(right: 8),
                       child: Text(
                         'Deliver',
                         style: TextStyle(
@@ -235,7 +235,7 @@ class ProcessPage4 extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40),
                       image: DecorationImage(
-                          image: AssetImage('assets/images/trackorder.png'))),
+                          image: AssetImage(AppImages.trackImage))),
                 ),
               ),
               Padding(

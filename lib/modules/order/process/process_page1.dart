@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
+import 'package:laundry_app/core/app_images.dart';
 import 'package:laundry_app/core/app_widget.dart';
 
-import 'package:laundry_app/modules/order/process/process2.dart';
+import 'package:laundry_app/modules/order/process/process_page2.dart';
 
-class OrderPage1 extends StatelessWidget {
-  const OrderPage1({super.key});
+class ProcessPage1 extends StatelessWidget {
+  const ProcessPage1({super.key});
 
   static MaterialPageRoute<void> route() {
     return MaterialPageRoute(
         settings: const RouteSettings(name: 'OrderPage'),
-        builder: (BuildContext context) => OrderPage1());
+        builder: (BuildContext context) => ProcessPage1());
   }
 
   @override
@@ -62,11 +63,11 @@ class OrderPage1 extends StatelessWidget {
               child: CircleAvatar(
                 foregroundColor: Color(0xFFf5f8fa),
                 radius: 70,
-                foregroundImage: AssetImage('assets/images/05.png'),
+                foregroundImage: AssetImage(AppImages.processimage1),
               ),
             ),
             const Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 70, vertical: 20),
               child: Text(
                 'Your clothes are still washed. will be finished soon.',
                 textAlign: TextAlign.center,
@@ -94,7 +95,7 @@ class OrderPage1 extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/images/05.png')),
+                                image: AssetImage(AppImages.processimage1)),
                             borderRadius: BorderRadius.circular(40)),
                       ),
                     ),
@@ -112,7 +113,7 @@ class OrderPage1 extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage('assets/images/process1.png')),
+                              image: AssetImage(AppImages.processimage2)),
                           borderRadius: BorderRadius.circular(40)),
                     ),
                   ),
@@ -129,7 +130,7 @@ class OrderPage1 extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage('assets/images/process2.png')),
+                              image: AssetImage(AppImages.processimage3)),
                           borderRadius: BorderRadius.circular(40)),
                     ),
                   ),
@@ -146,7 +147,7 @@ class OrderPage1 extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage('assets/images/process3.png')),
+                              image: AssetImage(AppImages.processimage4)),
                           borderRadius: BorderRadius.circular(40)),
                     ),
                   ),

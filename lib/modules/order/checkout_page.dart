@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/modules/order/order.dart';
 import 'package:laundry_app/modules/payment/views/paymentpage.dart';
+
 import 'package:laundry_app/widgets/app_buttons.dart';
 
 class CheckoutPage extends StatelessWidget {
@@ -11,7 +11,7 @@ class CheckoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xFFf2f2f3),
+      backgroundColor: AppColors.whiteLight,
       body: SafeArea(
         child: Column(
           children: [
@@ -25,7 +25,7 @@ class CheckoutPage extends StatelessWidget {
                     width: 40,
                     decoration: BoxDecoration(
                         border: Border.all(width: 0.1),
-                        color: Colors.white,
+                        color: AppColors.white,
                         borderRadius: BorderRadius.circular(10)),
                     child: IconButton(
                         onPressed: () {
@@ -38,7 +38,7 @@ class CheckoutPage extends StatelessWidget {
                     width: 40,
                     decoration: BoxDecoration(
                         border: Border.all(width: 0.1),
-                        color: Colors.white,
+                        color: AppColors.white,
                         borderRadius: BorderRadius.circular(10)),
                     child: IconButton(
                         onPressed: () {}, icon: const Icon(Icons.more_horiz)),
@@ -61,7 +61,7 @@ class CheckoutPage extends StatelessWidget {
                   Container(
                     height: 30,
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColors.white,
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(width: 0.1)),
                     child: const Padding(
@@ -88,7 +88,7 @@ class CheckoutPage extends StatelessWidget {
                   Container(
                     height: 30,
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColors.white,
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(width: 0.1)),
                     child: const Padding(
@@ -163,7 +163,7 @@ class CheckoutPage extends StatelessWidget {
                       height: 60,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.white),
+                          color: AppColors.white),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Row(
@@ -658,7 +658,7 @@ class CheckoutPage extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                PaymentPage1()));
+                                                PaymentPage()));
                                   }),
                             )
                           ],

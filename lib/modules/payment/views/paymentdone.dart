@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/modules/home/home.dart';
-import 'package:laundry_app/modules/order/process/process1.dart';
+import 'package:laundry_app/core/app_images.dart';
+
+import 'package:laundry_app/modules/order/process/process_page1.dart';
 
 class PaymentDone extends StatelessWidget {
   const PaymentDone({super.key});
@@ -21,12 +22,12 @@ class PaymentDone extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 40),
-              child: Image.asset('assets/images/done.png'),
+              child: Image.asset(AppImages.processDone),
             ),
             const Text(
               'Payment Success',
               style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 25),
             ),
@@ -51,13 +52,14 @@ class PaymentDone extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
-                      Navigator.pushAndRemoveUntil(context,
-                          MaterialPageRoute(builder: (context) => OrderPage1()),
-                          (route) {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProcessPage1()), (route) {
                         return route.isFirst;
                       });
                     },
-                    child: Text(
+                    child: const Text(
                       'Details order',
                       style: TextStyle(fontSize: 16, color: AppColors.blue),
                     ),
@@ -68,7 +70,7 @@ class PaymentDone extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 1, color: Colors.white)),
+                      border: Border.all(width: 1, color: AppColors.white)),
                   height: 50,
                   width: double.infinity,
                   child: ElevatedButton(
@@ -89,9 +91,9 @@ class PaymentDone extends StatelessWidget {
                       //   return index == 3;
                       // });
                     },
-                    child: Text(
+                    child: const Text(
                       'Back home',
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                      style: TextStyle(fontSize: 16, color: AppColors.white),
                     ),
                   ),
                 ))

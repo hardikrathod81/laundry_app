@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
+import 'package:laundry_app/core/app_images.dart';
 
-class History1 extends StatelessWidget {
-  const History1({super.key});
+class HistoryEmaptyPage extends StatelessWidget {
+  const HistoryEmaptyPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFf5f8fa),
+      backgroundColor: AppColors.whiteLight,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 200, left: 50),
-            child: Image.asset('assets/images/cat.png'),
+            child: Image.asset(AppImages.cat),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 60),

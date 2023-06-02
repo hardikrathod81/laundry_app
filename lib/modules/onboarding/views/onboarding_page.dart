@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
+import 'package:laundry_app/core/app_images.dart';
 import 'package:laundry_app/modules/authentication/authentication.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -8,13 +9,13 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF34ABEF),
+      backgroundColor: AppColors.blueLight,
       body: Column(
         children: [
           AspectRatio(
             aspectRatio: 1,
             child: Image.asset(
-              'assets/images/01.jpg',
+              AppImages.washingMachine,
               fit: BoxFit.cover,
             ),
           ),

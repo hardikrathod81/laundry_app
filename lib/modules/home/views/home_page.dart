@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
-import 'package:laundry_app/modules/order/checkout.dart';
+import 'package:laundry_app/modules/order/checkout_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xFFf2f5f8),
+      backgroundColor: AppColors.whiteLight,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -150,7 +150,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       Image.asset(
-                        'assets/images/03.png',
+                        AppImages.washingMachineBlue,
                         fit: BoxFit.cover,
                         height: 140,
                       ),

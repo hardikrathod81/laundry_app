@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
+import 'package:laundry_app/core/app_images.dart';
 import 'package:laundry_app/modules/order/order.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
 
@@ -59,7 +60,7 @@ class TrackOrderPage extends StatelessWidget {
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.fill,
-                            image: AssetImage('assets/images/trackorder.png'))),
+                            image: AssetImage(AppImages.trackImage))),
                   ),
                 ],
               ),
@@ -83,7 +84,7 @@ class TrackOrderPage extends StatelessWidget {
                             children: [
                               CircleAvatar(
                                 backgroundImage:
-                                    AssetImage('assets/images/04.jpg'),
+                                    AssetImage(AppImages.profileImage),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(left: 20),
@@ -236,7 +237,7 @@ class TrackOrderPage extends StatelessWidget {
                                   value: 'See details',
                                   onPressed: () {
                                     Navigator.pushAndRemoveUntil(
-                                        context, OrderPage1.route(), (route) {
+                                        context, ProcessPage1.route(), (route) {
                                       return route.isFirst;
                                     });
                                   }))
