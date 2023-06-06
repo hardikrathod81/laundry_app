@@ -4,9 +4,30 @@ import 'package:laundry_app/modules/payment/views/paymentpage.dart';
 
 import 'package:laundry_app/widgets/app_buttons.dart';
 
-class CheckoutPage extends StatelessWidget {
+class CheckoutPage extends StatefulWidget {
   const CheckoutPage({super.key});
 
+  @override
+  State<CheckoutPage> createState() => _CheckoutPageState();
+}
+
+int number1 = 0;
+int number2 = 0;
+int number3 = 0;
+int number4 = 0;
+
+var sum = number1 + number2;
+
+class Dash {
+  int count = number1 + number2 + number3 + number4;
+  double price = 0.5;
+
+  double totalprice() {
+    return count * price;
+  }
+}
+
+class _CheckoutPageState extends State<CheckoutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,7 +142,7 @@ class CheckoutPage extends StatelessWidget {
                 height: 150,
                 width: MediaQuery.sizeOf(context).width,
                 decoration: BoxDecoration(
-                    image: DecorationImage(
+                    image: const DecorationImage(
                         fit: BoxFit.fitWidth,
                         image: AssetImage('assets/images/wash.jpg')),
                     borderRadius: BorderRadius.circular(10)),
@@ -135,23 +156,28 @@ class CheckoutPage extends StatelessWidget {
                       topRight: Radius.circular(20))),
               child: Column(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(
+                  Padding(
+                    padding: const EdgeInsets.only(
                         right: 30, left: 30, top: 15, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Order list',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 17),
                         ),
-                        Text(
-                          'Add Category',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: AppColors.blue,
-                              fontWeight: FontWeight.bold),
+                        InkWell(
+                          onTap: () {
+                            debugPrint('Add category is tap');
+                          },
+                          child: const Text(
+                            'Add Category',
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: AppColors.blue,
+                                fontWeight: FontWeight.bold),
+                          ),
                         )
                       ],
                     ),
@@ -225,14 +251,20 @@ class CheckoutPage extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(40)),
                                     child: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            if (number1 > 0) {
+                                              number1--;
+                                            }
+                                          });
+                                        },
                                         icon: const Icon(
                                           Icons.remove,
                                           size: 17,
                                         )),
                                   ),
-                                  const Text(
-                                    '1',
+                                  Text(
+                                    '$number1',
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),
@@ -245,7 +277,13 @@ class CheckoutPage extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(40)),
                                     child: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            if (number1 < 99) {
+                                              number1++;
+                                            }
+                                          });
+                                        },
                                         icon: const Icon(
                                           Icons.add,
                                           size: 17,
@@ -328,14 +366,20 @@ class CheckoutPage extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(40)),
                                     child: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            if (number2 > 0) {
+                                              number2--;
+                                            }
+                                          });
+                                        },
                                         icon: const Icon(
                                           Icons.remove,
                                           size: 17,
                                         )),
                                   ),
-                                  const Text(
-                                    '1',
+                                  Text(
+                                    '$number2',
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),
@@ -348,7 +392,13 @@ class CheckoutPage extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(40)),
                                     child: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            if (number2 < 99) {
+                                              number2++;
+                                            }
+                                          });
+                                        },
                                         icon: const Icon(
                                           Icons.add,
                                           size: 17,
@@ -431,14 +481,20 @@ class CheckoutPage extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(40)),
                                     child: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            if (number3 > 0) {
+                                              number3--;
+                                            }
+                                          });
+                                        },
                                         icon: const Icon(
                                           Icons.remove,
                                           size: 17,
                                         )),
                                   ),
-                                  const Text(
-                                    '1',
+                                  Text(
+                                    '$number3',
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),
@@ -451,7 +507,13 @@ class CheckoutPage extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(40)),
                                     child: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            if (number3 < 99) {
+                                              number3++;
+                                            }
+                                          });
+                                        },
                                         icon: const Icon(
                                           Icons.add,
                                           size: 17,
@@ -534,14 +596,20 @@ class CheckoutPage extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(40)),
                                     child: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            if (number4 > 0) {
+                                              number4 -= sum;
+                                            }
+                                          });
+                                        },
                                         icon: const Icon(
                                           Icons.remove,
                                           size: 17,
                                         )),
                                   ),
-                                  const Text(
-                                    '1',
+                                  Text(
+                                    '$number4',
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),
@@ -554,7 +622,13 @@ class CheckoutPage extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(40)),
                                     child: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            if (number4 < 99) {
+                                              number4++;
+                                            }
+                                          });
+                                        },
                                         icon: const Icon(
                                           Icons.add,
                                           size: 17,
@@ -603,7 +677,7 @@ class CheckoutPage extends StatelessWidget {
                                                 image: AssetImage(
                                                     'assets/images/apple.png')),
                                           )),
-                                      const Padding(
+                                      Padding(
                                         padding: EdgeInsets.only(left: 15),
                                         child: Column(
                                           crossAxisAlignment:
@@ -616,7 +690,7 @@ class CheckoutPage extends StatelessWidget {
                                                   fontWeight: FontWeight.w600),
                                             ),
                                             Text(
-                                              '4 items',
+                                              '$sum',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15),
@@ -647,7 +721,7 @@ class CheckoutPage extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Padding(
                               padding: const EdgeInsets.only(
                                   bottom: 30, right: 30, left: 30),
@@ -658,7 +732,7 @@ class CheckoutPage extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                PaymentPage()));
+                                                const PaymentPage()));
                                   }),
                             )
                           ],

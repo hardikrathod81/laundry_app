@@ -5,9 +5,16 @@ import 'package:laundry_app/modules/payment/views/paymentdone.dart';
 
 import 'package:laundry_app/widgets/app_buttons.dart';
 
-class PaymentPage extends StatelessWidget {
+class PaymentPage extends StatefulWidget {
   const PaymentPage({super.key});
 
+  @override
+  State<PaymentPage> createState() => _PaymentPageState();
+}
+
+int _value = 1;
+
+class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,15 +76,23 @@ class PaymentPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            padding: const EdgeInsets.symmetric(vertical: 10),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Container(
-                                  height: 20,
-                                  width: 20,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(40),
-                                      border: Border.all(width: 2)),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 30),
+                                  child: SizedBox(
+                                    height: MediaQuery.sizeOf(context).height *
+                                        0.001,
+                                    child: Radio(
+                                        value: 1,
+                                        groupValue: _value,
+                                        onChanged: (value) {
+                                          setState(() {});
+                                        }),
+                                  ),
                                 ),
                                 const Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 15),
@@ -95,27 +110,12 @@ class PaymentPage extends StatelessWidget {
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                child: Container(
-                                  height: 20,
-                                  width: 20,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(40),
-                                      border: Border.all(
-                                          color: AppColors.blue, width: 2)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: AppColors.blue,
-                                          borderRadius:
-                                              BorderRadius.circular(40)),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              Radio(
+                                  value: 2,
+                                  groupValue: _value,
+                                  onChanged: (value) {
+                                    setState(() {});
+                                  }),
                               const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,

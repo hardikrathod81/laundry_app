@@ -13,7 +13,6 @@ class ListtileContainer extends StatelessWidget {
       style: ListTileStyle.list,
       contentPadding: const EdgeInsets.symmetric(horizontal: 25),
       onTap: () {},
-      onLongPress: () {},
       leading: const SizedBox(
         height: 60,
         width: 60,
