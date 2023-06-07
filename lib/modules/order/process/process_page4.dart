@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:laundry_app/core/app_checkicon.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
-import 'package:laundry_app/core/app_widget.dart';
+import 'package:laundry_app/widgets/app_widget.dart';
 import 'package:laundry_app/modules/order/process/trackorder_page.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
 
 class ProcessPage4 extends StatelessWidget {
   const ProcessPage4({super.key});
+
+  static MaterialPageRoute<void> route() {
+    return MaterialPageRoute(builder: (context) => const ProcessPage4());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +77,7 @@ class ProcessPage4 extends StatelessWidget {
                       padding: const EdgeInsets.all(4.0),
                       child: Container(
                         decoration: BoxDecoration(
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 image: AssetImage(AppImages.processedimage3)),
                             borderRadius: BorderRadius.circular(40)),
                       ),
@@ -234,7 +237,7 @@ class ProcessPage4 extends StatelessWidget {
                   height: 400,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage(AppImages.trackImage))),
                 ),
               ),
@@ -243,10 +246,7 @@ class ProcessPage4 extends StatelessWidget {
                 child: AppButton(
                     value: 'Track Order',
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => TrackOrderPage()));
+                      Navigator.push(context, TrackOrderPage.route());
                     }),
               )
             ],

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/core/app_widget.dart';
+import 'package:laundry_app/widgets/app_widget.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
   static MaterialPageRoute<void> route() {
-    return MaterialPageRoute(builder: (BuildContext context) => ChatPage());
+    return MaterialPageRoute(
+        builder: (BuildContext context) => const ChatPage());
   }
 
   @override
@@ -75,8 +76,17 @@ class ChatPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const ListtileContainer(),
-                    const ListtileContainer(),
+                    SizedBox(
+                      child: ListView.builder(
+                        itemCount: 2,
+                        shrinkWrap: true,
+                        itemExtent: 80,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return const ListtileContainer();
+                        },
+                      ),
+                    ),
                     const Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -90,7 +100,7 @@ class ChatPage extends StatelessWidget {
                         itemExtent: 80,
                         itemCount: 10,
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return const ListtileContainer();
                         },

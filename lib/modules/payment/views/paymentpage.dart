@@ -5,14 +5,30 @@ import 'package:laundry_app/modules/payment/views/paymentdone.dart';
 
 import 'package:laundry_app/widgets/app_buttons.dart';
 
+enum RadioButton { selfservice, deliveryService }
+
+enum PaymentRadioButton { applepay, creditcard, paypal }
+
 class PaymentPage extends StatefulWidget {
-  const PaymentPage({super.key});
+  const PaymentPage({
+    super.key,
+    required this.name,
+  });
+
+  final String name;
+
+  static MaterialPageRoute<void> route({required String name}) {
+    return MaterialPageRoute(
+      builder: (context) => PaymentPage(name: name),
+    );
+  }
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
 }
 
-int _value = 1;
+RadioButton _value = RadioButton.selfservice;
+PaymentRadioButton _paymentRadioButton = PaymentRadioButton.applepay;
 
 class _PaymentPageState extends State<PaymentPage> {
   @override
@@ -22,7 +38,7 @@ class _PaymentPageState extends State<PaymentPage> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: SizedBox(
-            height: MediaQuery.sizeOf(context).height,
+            height: MediaQuery.sizeOf(context).height * 0.966,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Column(
@@ -66,98 +82,70 @@ class _PaymentPageState extends State<PaymentPage> {
                     ),
                   ),
                   Container(
-                    height: MediaQuery.sizeOf(context).height * 0.25,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 30),
-                                  child: SizedBox(
-                                    height: MediaQuery.sizeOf(context).height *
-                                        0.001,
-                                    child: Radio(
-                                        value: 1,
-                                        groupValue: _value,
-                                        onChanged: (value) {
-                                          setState(() {});
-                                        }),
-                                  ),
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 15),
-                                  child: Text(
-                                    'Self service',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
-                                  ),
-                                )
-                              ],
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        ListTile(
+                          horizontalTitleGap: 1,
+                          title: const Text(
+                            'Self service',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                          leading: Radio(
+                              value: RadioButton.selfservice,
+                              groupValue: _value,
+                              onChanged: (value) {
+                                setState(() {
+                                  _value = RadioButton.selfservice;
+                                });
+                              }),
+                        ),
+                        const Divider(thickness: 1),
+                        ListTile(
+                          minVerticalPadding: 3,
+                          horizontalTitleGap: 1,
+                          title: const Text(
+                            'Delivery service',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                          subtitle: const Padding(
+                            padding: EdgeInsets.only(top: 10, right: 20),
+                            child: Text(
+                                'Jl.Sempit lebar panjang no 30 gang buntu'),
+                          ),
+                          leading: Padding(
+                            padding: const EdgeInsets.only(bottom: 40),
+                            child: Radio(
+                                value: RadioButton.deliveryService,
+                                groupValue: _value,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _value = RadioButton.deliveryService;
+                                  });
+                                }),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: const Text(
+                              'Edit Address',
+                              style: TextStyle(
+                                  color: AppColors.blue,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline),
                             ),
                           ),
-                          const Divider(thickness: 1),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Radio(
-                                  value: 2,
-                                  groupValue: _value,
-                                  onChanged: (value) {
-                                    setState(() {});
-                                  }),
-                              const Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 10),
-                                    child: Text(
-                                      'Delivery service',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10),
-                                    child: SizedBox(
-                                        width: 200,
-                                        child: Text(
-                                            'Jl.Sempit lebar panjang no 30 gang buntu')),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: const Text(
-                                'Edit Address',
-                                style: TextStyle(
-                                    color: AppColors.blue,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    decoration: TextDecoration.underline),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
+                        )
+                      ],
                     ),
                   ),
                   const Padding(
@@ -175,172 +163,122 @@ class _PaymentPageState extends State<PaymentPage> {
                         color: Colors.white),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
+                          horizontal: 10, vertical: 10),
                       child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                          color: Color(0xFFeef2f4),
-                                          borderRadius:
-                                              BorderRadius.circular(40)),
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(10.0),
-                                        child: Image(
-                                            image: AssetImage(
-                                                AppImages.appleLogo)),
-                                      )),
-                                  const Padding(
-                                    padding: EdgeInsets.only(left: 20),
-                                    child: Text(
-                                      'Apple pay',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                height: 20,
-                                width: 20,
+                          ListTile(
+                            leading: Container(
+                                height: 40,
+                                width: 40,
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(40),
-                                    border: Border.all(
-                                        color: AppColors.blue, width: 2)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: AppColors.blue,
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                  ),
-                                ),
+                                    color: const Color(0xFFeef2f4),
+                                    borderRadius: BorderRadius.circular(40)),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Image(
+                                      image: AssetImage(AppImages.appleLogo)),
+                                )),
+                            title: const Text(
+                              'Apple pay',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
                               ),
-                            ],
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10),
-                            child: Divider(thickness: 1),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                          color: Color(0xFFeef2f4),
-                                          borderRadius:
-                                              BorderRadius.circular(40)),
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Image(
-                                            image: AssetImage(
-                                                AppImages.mastercardLogo)),
-                                      )),
-                                  const Padding(
-                                    padding: EdgeInsets.only(left: 20),
-                                    child: Text(
-                                      'Credit card',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                height: 20,
-                                width: 20,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(40),
-                                    border: Border.all(
-                                        color: AppColors.black, width: 2)),
-                              ),
-                            ],
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10),
-                            child: Divider(thickness: 1),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                          color: const Color(0xFFeef2f4),
-                                          borderRadius:
-                                              BorderRadius.circular(40)),
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(10.0),
-                                        child: Image(
-                                            image: AssetImage(
-                                                AppImages.paypalLogo)),
-                                      )),
-                                  const Padding(
-                                    padding: EdgeInsets.only(left: 20),
-                                    child: Text(
-                                      'Paypal',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                height: 20,
-                                width: 20,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(40),
-                                    border: Border.all(
-                                        color: AppColors.black, width: 2)),
-                              ),
-                            ],
-                          ),
-                          Spacer(),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: const Text(
-                                    'Add new method',
-                                    style: TextStyle(
-                                        color: AppColors.blue,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        decoration: TextDecoration.underline),
-                                  ),
-                                ),
-                              ],
                             ),
-                          )
+                            trailing: Radio(
+                                value: PaymentRadioButton.applepay,
+                                groupValue: _paymentRadioButton,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _paymentRadioButton =
+                                        PaymentRadioButton.applepay;
+                                  });
+                                }),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 5),
+                            child: Divider(thickness: 1),
+                          ),
+                          ListTile(
+                            leading: Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                    color: const Color(0xFFeef2f4),
+                                    borderRadius: BorderRadius.circular(40)),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Image(
+                                      image:
+                                          AssetImage(AppImages.mastercardLogo)),
+                                )),
+                            title: const Text(
+                              'Credit Card',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            trailing: Radio(
+                                value: PaymentRadioButton.creditcard,
+                                groupValue: _paymentRadioButton,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _paymentRadioButton =
+                                        PaymentRadioButton.creditcard;
+                                  });
+                                }),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 5),
+                            child: Divider(thickness: 1),
+                          ),
+                          ListTile(
+                            leading: Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                    color: const Color(0xFFeef2f4),
+                                    borderRadius: BorderRadius.circular(40)),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Image(
+                                      image: AssetImage(AppImages.paypalLogo)),
+                                )),
+                            title: const Text(
+                              'Pay Pal',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            trailing: Radio(
+                                value: PaymentRadioButton.paypal,
+                                groupValue: _paymentRadioButton,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _paymentRadioButton =
+                                        PaymentRadioButton.paypal;
+                                  });
+                                }),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 20),
+                            child: Text(
+                              'Add new method',
+                              style: TextStyle(
+                                  color: AppColors.blue,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline),
+                            ),
+                          ),
                         ],
                       ),
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 60),
+                    padding: const EdgeInsets.only(bottom: 20),
                     child: AppButton(
-                        value: 'Pay (\$2.0)',
+                        value: 'Pay (\$ ${widget.name} )',
                         onPressed: () {
                           Navigator.pushAndRemoveUntil(
                               context, PaymentDone.route(), (route) {

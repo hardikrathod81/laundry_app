@@ -6,11 +6,11 @@ import 'package:laundry_app/modules/order/checkout_page.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  // static MaterialPageRoute<void> route() {
-  //   return MaterialPageRoute(
-  //     builder: (BuildContext context) => const HomePage(),
-  //   );
-  // }
+  static MaterialPageRoute<void> route() {
+    return MaterialPageRoute(
+      builder: (BuildContext context) => const HomePage(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

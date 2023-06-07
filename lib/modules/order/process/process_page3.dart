@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:laundry_app/core/app_checkicon.dart';
+
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
-import 'package:laundry_app/core/app_widget.dart';
+import 'package:laundry_app/widgets/app_widget.dart';
 import 'package:laundry_app/modules/order/process/process_page4.dart';
 
 class ProcessPage3 extends StatelessWidget {
   const ProcessPage3({super.key});
+
+  static MaterialPageRoute<void> route() {
+    return MaterialPageRoute(builder: (context) => const ProcessPage3());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +55,9 @@ class ProcessPage3 extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 50),
+              padding: const EdgeInsets.only(top: 50),
               child: CircleAvatar(
-                backgroundColor: Color(0xFFf1f3f6),
+                backgroundColor: const Color(0xFFf1f3f6),
                 radius: 70,
                 child: AspectRatio(
                   aspectRatio: 1 / 1.6,
@@ -62,7 +66,7 @@ class ProcessPage3 extends StatelessWidget {
               ),
             ),
             const Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 70, vertical: 20),
               child: Text(
                 'Your clothes are still washed. will be finished soon.',
                 textAlign: TextAlign.center,
@@ -78,10 +82,7 @@ class ProcessPage3 extends StatelessWidget {
                 const BlueLine(),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProcessPage4()));
+                    Navigator.push(context, ProcessPage4.route());
                   },
                   child: Container(
                     height: 40,
@@ -93,7 +94,7 @@ class ProcessPage3 extends StatelessWidget {
                       padding: const EdgeInsets.all(4.0),
                       child: Container(
                         decoration: BoxDecoration(
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 image: AssetImage(AppImages.processedimage2)),
                             borderRadius: BorderRadius.circular(40)),
                       ),
@@ -111,7 +112,7 @@ class ProcessPage3 extends StatelessWidget {
                     padding: const EdgeInsets.all(4.0),
                     child: Container(
                       decoration: BoxDecoration(
-                          image: DecorationImage(
+                          image: const DecorationImage(
                               image: AssetImage(AppImages.processimage4)),
                           borderRadius: BorderRadius.circular(40)),
                     ),
@@ -120,7 +121,7 @@ class ProcessPage3 extends StatelessWidget {
               ]),
             ),
             const Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: EdgeInsets.symmetric(horizontal: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -132,7 +133,7 @@ class ProcessPage3 extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 10),
+                    padding: EdgeInsets.only(right: 10),
                     child: Text(
                       'Cleaning',
                       style: TextStyle(
@@ -142,7 +143,7 @@ class ProcessPage3 extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 10),
+                    padding: EdgeInsets.only(right: 10),
                     child: Text(
                       'Dying',
                       style: TextStyle(
@@ -152,7 +153,7 @@ class ProcessPage3 extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 8),
+                    padding: EdgeInsets.only(right: 8),
                     child: Text(
                       'Deliver',
                       style: TextStyle(

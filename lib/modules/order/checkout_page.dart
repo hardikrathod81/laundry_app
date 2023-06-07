@@ -2,32 +2,78 @@ import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/modules/payment/views/paymentpage.dart';
 
+export 'package:laundry_app/modules/payment/views/paymentpage.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
 
 class CheckoutPage extends StatefulWidget {
   const CheckoutPage({super.key});
 
+  static MaterialPageRoute<void> route() {
+    return MaterialPageRoute(builder: (context) => const CheckoutPage());
+  }
+
   @override
   State<CheckoutPage> createState() => _CheckoutPageState();
 }
 
-int number1 = 0;
-int number2 = 0;
-int number3 = 0;
-int number4 = 0;
+// ignore: empty_constructor_bodies
+class CartItem {
+  String name;
+  double price;
+  int quantity;
 
-var sum = number1 + number2;
-
-class Dash {
-  int count = number1 + number2 + number3 + number4;
-  double price = 0.5;
-
-  double totalprice() {
-    return count * price;
-  }
+  CartItem({required this.name, required this.price, required this.quantity});
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
+  List<CartItem> cartItem = [
+    CartItem(name: 'T-shirt', price: 0.5, quantity: 0),
+    CartItem(name: 'Jens', price: 0.5, quantity: 0),
+    CartItem(name: "Short", price: 0.5, quantity: 0),
+    CartItem(name: 'Long Dress', price: 0.5, quantity: 0)
+  ];
+
+  int _totalquntity() {
+    int totalquantity = 0;
+    for (var quan in cartItem) {
+      totalquantity += quan.quantity;
+    }
+    return totalquantity;
+  }
+
+  double calculateTotalValue() {
+    double total = 0;
+    for (var item in cartItem) {
+      total += item.price * item.quantity;
+    }
+    return total;
+  }
+
+  double calculateTotalCartValue() {
+    double total = 0.0;
+    for (var item in cartItem) {
+      total += item.price * item.quantity;
+    }
+    return total;
+  }
+
+  void addMultipleItemsToCart() {
+    for (int i = 1; i <= 1; i++) {
+      CartItem newItem = CartItem(
+        name: ' $i',
+        price: 0.5,
+        quantity: 0,
+      );
+      addItemToCart(newItem);
+    }
+  }
+
+  void addItemToCart(CartItem item) {
+    setState(() {
+      cartItem.add(item);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,7 +185,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               child: Container(
-                height: 150,
+                height: MediaQuery.sizeOf(context).height * 0.18,
                 width: MediaQuery.sizeOf(context).width,
                 decoration: BoxDecoration(
                     image: const DecorationImage(
@@ -171,33 +217,37 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           onTap: () {
                             debugPrint('Add category is tap');
                           },
-                          child: const Text(
-                            'Add Category',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: AppColors.blue,
-                                fontWeight: FontWeight.bold),
+                          child: InkWell(
+                            onTap: () {
+                              addMultipleItemsToCart();
+                            },
+                            child: const Text(
+                              'Add Category',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: AppColors.blue,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         )
                       ],
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                    child: Container(
-                      height: 60,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColors.white),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
+                  SizedBox(
+                    height: MediaQuery.sizeOf(context).height * 0.35,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: cartItem.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 20),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: AppColors.white),
+                            child: ListTile(
+                                leading: Container(
                                     height: 40,
                                     width: 40,
                                     decoration: BoxDecoration(
@@ -210,534 +260,157 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                           image: AssetImage(
                                               'assets/images/apple.png')),
                                     )),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 13, vertical: 13),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'T-Shirt',
-                                        style: TextStyle(
-                                            color: AppColors.black,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '\$ 0.5',
-                                        style: TextStyle(
-                                            color: AppColors.black,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
+                                title: Text(
+                                  (cartItem[index].name),
+                                  style: const TextStyle(
+                                      color: AppColors.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 100,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    height: 35,
-                                    width: 35,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 0.1, color: AppColors.gray),
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    child: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            if (number1 > 0) {
-                                              number1--;
-                                            }
-                                          });
-                                        },
-                                        icon: const Icon(
-                                          Icons.remove,
-                                          size: 17,
-                                        )),
-                                  ),
-                                  Text(
-                                    '$number1',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  Container(
-                                    height: 35,
-                                    width: 35,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 0.1, color: AppColors.gray),
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    child: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            if (number1 < 99) {
-                                              number1++;
-                                            }
-                                          });
-                                        },
-                                        icon: const Icon(
-                                          Icons.add,
-                                          size: 17,
-                                        )),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                    child: Container(
-                      height: 60,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFFeef2f4),
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(10.0),
-                                      child: Image(
-                                          image: AssetImage(
-                                              'assets/images/apple.png')),
-                                    )),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 13, vertical: 13),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Jeans',
-                                        style: TextStyle(
-                                            color: AppColors.black,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '\$ 0.5',
-                                        style: TextStyle(
-                                            color: AppColors.black,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
+                                subtitle: Text(
+                                  '\$  ${cartItem[index].price.toStringAsFixed(2)}',
+                                  style: const TextStyle(
+                                      color: AppColors.black,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 100,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    height: 35,
-                                    width: 35,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 0.1, color: AppColors.gray),
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    child: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            if (number2 > 0) {
-                                              number2--;
-                                            }
-                                          });
-                                        },
-                                        icon: const Icon(
-                                          Icons.remove,
-                                          size: 17,
-                                        )),
-                                  ),
-                                  Text(
-                                    '$number2',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  Container(
-                                    height: 35,
-                                    width: 35,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 0.1, color: AppColors.gray),
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    child: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            if (number2 < 99) {
-                                              number2++;
-                                            }
-                                          });
-                                        },
-                                        icon: const Icon(
-                                          Icons.add,
-                                          size: 17,
-                                        )),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                    child: Container(
-                      height: 60,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFFeef2f4),
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(10.0),
-                                      child: Image(
-                                          image: AssetImage(
-                                              'assets/images/apple.png')),
-                                    )),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 13, vertical: 13),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Short',
-                                        style: TextStyle(
-                                            color: AppColors.black,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '\$ 0.5',
-                                        style: TextStyle(
-                                            color: AppColors.black,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 100,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    height: 35,
-                                    width: 35,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 0.1, color: AppColors.gray),
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    child: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            if (number3 > 0) {
-                                              number3--;
-                                            }
-                                          });
-                                        },
-                                        icon: const Icon(
-                                          Icons.remove,
-                                          size: 17,
-                                        )),
-                                  ),
-                                  Text(
-                                    '$number3',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  Container(
-                                    height: 35,
-                                    width: 35,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 0.1, color: AppColors.gray),
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    child: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            if (number3 < 99) {
-                                              number3++;
-                                            }
-                                          });
-                                        },
-                                        icon: const Icon(
-                                          Icons.add,
-                                          size: 17,
-                                        )),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                    child: Container(
-                      height: 60,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFFeef2f4),
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(10.0),
-                                      child: Image(
-                                          image: AssetImage(
-                                              'assets/images/apple.png')),
-                                    )),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 13, vertical: 13),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Long dress',
-                                        style: TextStyle(
-                                            color: AppColors.black,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '\$ 0.5',
-                                        style: TextStyle(
-                                            color: AppColors.black,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 100,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    height: 35,
-                                    width: 35,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 0.1, color: AppColors.gray),
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    child: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            if (number4 > 0) {
-                                              number4 -= sum;
-                                            }
-                                          });
-                                        },
-                                        icon: const Icon(
-                                          Icons.remove,
-                                          size: 17,
-                                        )),
-                                  ),
-                                  Text(
-                                    '$number4',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  Container(
-                                    height: 35,
-                                    width: 35,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 0.1, color: AppColors.gray),
-                                        borderRadius:
-                                            BorderRadius.circular(40)),
-                                    child: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            if (number4 < 99) {
-                                              number4++;
-                                            }
-                                          });
-                                        },
-                                        icon: const Icon(
-                                          Icons.add,
-                                          size: 17,
-                                        )),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Container(
-                      height: MediaQuery.sizeOf(context).height / 1 / 5,
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20))),
-                      child: SizedBox(
-                        height: 40,
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 25, vertical: 10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
+                                trailing: SizedBox(
+                                  width: 100,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                          height: 40,
-                                          width: 40,
-                                          decoration: BoxDecoration(
-                                              color: const Color(0xFFeef2f4),
-                                              borderRadius:
-                                                  BorderRadius.circular(40)),
-                                          child: const Padding(
-                                            padding: EdgeInsets.all(10.0),
-                                            child: Image(
-                                                image: AssetImage(
-                                                    'assets/images/apple.png')),
-                                          )),
-                                      Padding(
-                                        padding: EdgeInsets.only(left: 15),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Total items",
-                                              style: TextStyle(
-                                                  color: AppColors.gray,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                            Text(
-                                              '$sum',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 15),
-                                            )
-                                          ],
-                                        ),
+                                        height: 35,
+                                        width: 35,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                width: 0.1,
+                                                color: AppColors.gray),
+                                            borderRadius:
+                                                BorderRadius.circular(40)),
+                                        child: IconButton(
+                                            onPressed: () {
+                                              debugPrint('removeitem');
+                                              setState(() {
+                                                if (cartItem[index].quantity >
+                                                    0) {
+                                                  cartItem[index].quantity--;
+                                                } else {
+                                                  cartItem.removeAt(index);
+                                                }
+                                              });
+                                            },
+                                            icon: const Icon(
+                                              Icons.remove,
+                                              size: 17,
+                                            )),
+                                      ),
+                                      Text(
+                                        "${cartItem[index].quantity}",
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Container(
+                                        height: 35,
+                                        width: 35,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                width: 0.1,
+                                                color: AppColors.gray),
+                                            borderRadius:
+                                                BorderRadius.circular(40)),
+                                        child: IconButton(
+                                            onPressed: () {
+                                              debugPrint('additem');
+                                              setState(() {
+                                                if (cartItem[index].quantity <
+                                                    99) {
+                                                  cartItem[index].quantity++;
+                                                }
+                                              });
+                                            },
+                                            icon: const Icon(
+                                              Icons.add,
+                                              size: 17,
+                                            )),
                                       ),
                                     ],
                                   ),
-                                  const Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Cost",
-                                        style: TextStyle(
-                                            color: AppColors.gray,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                      Text(
-                                        '\$2.0',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15),
-                                      )
-                                    ],
-                                  ),
-                                ],
+                                )),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.sizeOf(context).height * 0.12,
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20))),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: ListTile(
+                          leading: Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                  color: const Color(0xFFeef2f4),
+                                  borderRadius: BorderRadius.circular(40)),
+                              child: const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Image(
+                                    image:
+                                        AssetImage('assets/images/apple.png')),
+                              )),
+                          title: const Text(
+                            'Total items',
+                            style: TextStyle(
+                                color: AppColors.gray,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          subtitle: Text(
+                            ' ${_totalquntity()} Items ',
+                            style: const TextStyle(
+                                color: AppColors.black,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          trailing: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "Cost",
+                                style: TextStyle(
+                                    color: AppColors.gray,
+                                    fontWeight: FontWeight.w600),
                               ),
-                            ),
-                            const Spacer(),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 30, right: 30, left: 30),
-                              child: AppButton(
-                                  value: "Checkout",
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const PaymentPage()));
-                                  }),
-                            )
-                          ],
-                        ),
-                      ),
+                              Text(
+                                '\$ ${calculateTotalValue()}',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15),
+                              )
+                            ],
+                          )),
+                    ),
+                  ),
+                  Container(
+                    color: AppColors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: AppButton(
+                          value: "Checkout",
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PaymentPage.route(
+                                  name: '${calculateTotalValue()}'),
+                            );
+                          }),
                     ),
                   ),
                 ],

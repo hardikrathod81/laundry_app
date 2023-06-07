@@ -8,7 +8,8 @@ class PaymentDone extends StatelessWidget {
   const PaymentDone({super.key});
 
   static MaterialPageRoute<void> route() {
-    return MaterialPageRoute(builder: (BuildContext context) => PaymentDone());
+    return MaterialPageRoute(
+        builder: (BuildContext context) => const PaymentDone());
   }
 
   @override
@@ -48,14 +49,12 @@ class PaymentDone extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0XFFffffff),
+                        backgroundColor: const Color(0XFFffffff),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
                       Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ProcessPage1()), (route) {
+                          context, ProcessPage1.route(), (route) {
                         return route.isFirst;
                       });
                     },

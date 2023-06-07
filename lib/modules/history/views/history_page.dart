@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/core/app_widget.dart';
+import 'package:laundry_app/widgets/app_widget.dart';
 
 class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});
@@ -50,7 +50,7 @@ class HistoryPage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 20),
+                                      padding: EdgeInsets.only(top: 20),
                                       child: Text(
                                         'Roumah Laundry',
                                         style: TextStyle(
@@ -190,21 +190,15 @@ class HistoryPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
-                    const HistoryContainer(),
+                    ListView.builder(
+                      itemCount: 10,
+                      itemExtent: 160,
+                      shrinkWrap: true,
+                      physics: const ScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return const HistoryContainer();
+                      },
+                    ),
                   ],
                 ),
               ),

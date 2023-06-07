@@ -6,7 +6,8 @@ class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   static MaterialPageRoute<void> route() {
-    return MaterialPageRoute(builder: (BuildContext context) => ProfilePage());
+    return MaterialPageRoute(
+        builder: (BuildContext context) => const ProfilePage());
   }
 
   @override

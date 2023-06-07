@@ -7,6 +7,10 @@ import 'package:laundry_app/widgets/app_buttons.dart';
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
+  static MaterialPageRoute<void> route() {
+    return MaterialPageRoute(builder: (context) => const RegisterPage());
+  }
+
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
@@ -20,11 +24,8 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
         backgroundColor: AppColors.white,
         body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          reverse: false,
           child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -117,13 +118,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                 borderRadius: BorderRadius.circular(5))),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      child: Text(
-                        'Password',
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w700),
-                      ),
+                    const Text(
+                      'Password',
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
                     ),
                     const SizedBox(height: 10),
                     Padding(

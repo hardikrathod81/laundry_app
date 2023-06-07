@@ -7,6 +7,10 @@ import 'package:laundry_app/widgets/app_buttons.dart';
 class TrackOrderPage extends StatelessWidget {
   const TrackOrderPage({super.key});
 
+  static MaterialPageRoute<void> route() {
+    return MaterialPageRoute(builder: (context) => const TrackOrderPage());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +58,7 @@ class TrackOrderPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Container(
                     height: 500,
                     decoration: const BoxDecoration(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
 import 'package:laundry_app/modules/authentication/authentication.dart';
+import 'package:laundry_app/modules/home/home.dart';
 import 'package:laundry_app/modules/home/views/root_page.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
 
@@ -27,9 +28,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
         backgroundColor: AppColors.white,
         body: SingleChildScrollView(
+          reverse: false,
           child: SafeArea(
             child: Form(
               key: _key,
@@ -82,7 +83,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 30, right: 30, bottom: 15),
+                    padding:
+                        const EdgeInsets.only(left: 30, right: 30, bottom: 15),
                     child: SizedBox(
                       height: 70,
                       child: TextFormField(
@@ -100,9 +102,9 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         decoration: InputDecoration(
                             contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
+                                const EdgeInsets.symmetric(horizontal: 10),
                             hintText: 'Email',
-                            hintStyle: TextStyle(fontSize: 15),
+                            hintStyle: const TextStyle(fontSize: 15),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -133,9 +135,9 @@ class _LoginPageState extends State<LoginPage> {
                         obscureText: _obscureText,
                         decoration: InputDecoration(
                             contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
+                                const EdgeInsets.symmetric(horizontal: 10),
                             hintText: 'Password',
-                            hintStyle: TextStyle(fontSize: 15),
+                            hintStyle: const TextStyle(fontSize: 15),
                             suffixIcon: InkWell(
                                 onTap: () {
                                   setState(() {
@@ -199,84 +201,84 @@ class _LoginPageState extends State<LoginPage> {
                           Padding(
                             padding: const EdgeInsets.only(right: 20),
                             child: GestureDetector(
-                              onTap: () {},
-                              child: Container(
+                                onTap: () {},
+                                child: Container(
                                   height:
                                       MediaQuery.sizeOf(context).height * 0.055,
                                   width: MediaQuery.sizeOf(context).width * 0.4,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(width: 0.3),
+                                      borderRadius: BorderRadius.circular(10)),
                                   child: Row(
                                     children: [
-                                      SizedBox(width: 35),
+                                      const SizedBox(width: 35),
                                       Image.asset(
                                         AppImages.goole,
                                         height: 14,
                                         width: 30,
                                       ),
-                                      Text(
+                                      const Text(
                                         'Google',
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       )
                                     ],
                                   ),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(width: 0.3),
-                                      borderRadius: BorderRadius.circular(10))),
-                            ),
+                                )),
                           ),
                           GestureDetector(
                             onTap: () {},
                             child: Container(
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.055,
-                                width: MediaQuery.sizeOf(context).width * 0.4,
-                                child: Row(
-                                  children: [
-                                    SizedBox(width: 27),
-                                    Image.asset(
-                                      AppImages.facbook,
-                                      height: 15,
-                                      width: 30,
-                                    ),
-                                    Text(
-                                      'Facebook',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
-                                ),
-                                decoration: BoxDecoration(
-                                    border: Border.all(width: 0.3),
-                                    borderRadius: BorderRadius.circular(10))),
+                              height: MediaQuery.sizeOf(context).height * 0.055,
+                              width: MediaQuery.sizeOf(context).width * 0.4,
+                              decoration: BoxDecoration(
+                                  border: Border.all(width: 0.3),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Row(
+                                children: [
+                                  const SizedBox(width: 27),
+                                  Image.asset(
+                                    AppImages.facbook,
+                                    height: 15,
+                                    width: 30,
+                                  ),
+                                  const Text(
+                                    'Facebook',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
+                            ),
                           )
                         ],
                       ),
                     ),
                   ),
                   const SizedBox(height: 160),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('Dont\'t have an account?',
-                          style: TextStyle(
-                              color: AppColors.gray,
-                              fontWeight: FontWeight.w600)),
-                      const SizedBox(width: 5),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => RegisterPage()));
-                        },
-                        child: const Text(
-                          'Register',
-                          style: TextStyle(
-                              color: AppColors.blue,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      )
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Dont\'t have an account?',
+                            style: TextStyle(
+                                color: AppColors.gray,
+                                fontWeight: FontWeight.w600)),
+                        const SizedBox(width: 5),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, RegisterPage.route());
+                          },
+                          child: const Text(
+                            'Register',
+                            style: TextStyle(
+                                color: AppColors.blue,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
