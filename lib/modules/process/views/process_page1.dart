@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
-import 'package:laundry_app/widgets/app_widget.dart';
-
-import 'package:laundry_app/modules/order/process/process_page2.dart';
+import 'package:laundry_app/modules/process/widget/process_widgets.dart';
+import 'package:laundry_app/modules/process/views/process_page2.dart';
 
 class ProcessPage1 extends StatelessWidget {
   const ProcessPage1({super.key});
@@ -63,7 +62,7 @@ class ProcessPage1 extends StatelessWidget {
               child: CircleAvatar(
                 foregroundColor: Color(0xFFf5f8fa),
                 radius: 70,
-                foregroundImage: AssetImage(AppImages.processimage1),
+                foregroundImage: AssetImage(AppImages.processImage1),
               ),
             ),
             const Padding(
@@ -92,7 +91,7 @@ class ProcessPage1 extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                             image: const DecorationImage(
-                                image: AssetImage(AppImages.processimage1)),
+                                image: AssetImage(AppImages.processImage1)),
                             borderRadius: BorderRadius.circular(40)),
                       ),
                     ),
@@ -110,7 +109,7 @@ class ProcessPage1 extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           image: const DecorationImage(
-                              image: AssetImage(AppImages.processimage2)),
+                              image: AssetImage(AppImages.processImage2)),
                           borderRadius: BorderRadius.circular(40)),
                     ),
                   ),
@@ -127,7 +126,7 @@ class ProcessPage1 extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           image: const DecorationImage(
-                              image: AssetImage(AppImages.processimage3)),
+                              image: AssetImage(AppImages.processImage3)),
                           borderRadius: BorderRadius.circular(40)),
                     ),
                   ),
@@ -144,7 +143,7 @@ class ProcessPage1 extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           image: const DecorationImage(
-                              image: AssetImage(AppImages.processimage4)),
+                              image: AssetImage(AppImages.processImage4)),
                           borderRadius: BorderRadius.circular(40)),
                     ),
                   ),

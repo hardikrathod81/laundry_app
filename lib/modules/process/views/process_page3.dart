@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-
+import 'package:laundry_app/modules/process/widget/process_widgets.dart';
+import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
 import 'package:laundry_app/widgets/app_widget.dart';
-import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/modules/order/process/process_page3.dart';
+import 'package:laundry_app/modules/process/views/process_page4.dart';
 
-class ProcessPage2 extends StatelessWidget {
-  const ProcessPage2({super.key});
+class ProcessPage3 extends StatelessWidget {
+  const ProcessPage3({super.key});
 
   static MaterialPageRoute<void> route() {
-    return MaterialPageRoute(builder: (context) => const ProcessPage2());
+    return MaterialPageRoute(builder: (context) => const ProcessPage3());
   }
 
   @override
@@ -61,7 +61,7 @@ class ProcessPage2 extends StatelessWidget {
                 radius: 70,
                 child: AspectRatio(
                   aspectRatio: 1 / 1.6,
-                  child: Image.asset(AppImages.processedimage1),
+                  child: Image.asset(AppImages.processedImage2),
                 ),
               ),
             ),
@@ -78,9 +78,11 @@ class ProcessPage2 extends StatelessWidget {
               child: Row(children: [
                 const CheckIcon(),
                 const BlueLine(),
+                const CheckIcon(),
+                const BlueLine(),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context, ProcessPage3.route());
+                    Navigator.push(context, ProcessPage4.route());
                   },
                   child: Container(
                     height: 40,
@@ -89,12 +91,11 @@ class ProcessPage2 extends StatelessWidget {
                         borderRadius: BorderRadius.circular(40),
                         border: Border.all(color: AppColors.blue, width: 2)),
                     child: Padding(
-                      padding: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: Container(
                         decoration: BoxDecoration(
                             image: const DecorationImage(
-                                fit: BoxFit.contain,
-                                image: AssetImage(AppImages.processedimage1)),
+                                image: AssetImage(AppImages.processedImage2)),
                             borderRadius: BorderRadius.circular(40)),
                       ),
                     ),
@@ -112,24 +113,7 @@ class ProcessPage2 extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           image: const DecorationImage(
-                              image: AssetImage(AppImages.processimage3)),
-                          borderRadius: BorderRadius.circular(40)),
-                    ),
-                  ),
-                ),
-                const Divide(),
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      border: Border.all(color: AppColors.lightGray, width: 2)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          image: const DecorationImage(
-                              image: AssetImage(AppImages.processimage4)),
+                              image: AssetImage(AppImages.processImage4)),
                           borderRadius: BorderRadius.circular(40)),
                     ),
                   ),
@@ -137,9 +121,7 @@ class ProcessPage2 extends StatelessWidget {
               ]),
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 30,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -166,7 +148,7 @@ class ProcessPage2 extends StatelessWidget {
                       'Dying',
                       style: TextStyle(
                           fontSize: 11,
-                          color: AppColors.lightGray,
+                          color: AppColors.black,
                           fontWeight: FontWeight.bold),
                     ),
                   ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
-import 'package:laundry_app/modules/payment/views/paymentdone.dart';
+import 'package:laundry_app/modules/payment/views/payment_done.dart';
 
 import 'package:laundry_app/widgets/app_buttons.dart';
 

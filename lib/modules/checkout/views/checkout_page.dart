@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/modules/payment/views/paymentpage.dart';
+import 'package:laundry_app/modules/payment/views/payment_page.dart';
 
-export 'package:laundry_app/modules/payment/views/paymentpage.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
 
 class CheckoutPage extends StatefulWidget {
@@ -41,7 +40,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     return totalquantity;
   }
 
-  double calculateTotalValue() {
+  double _calculateTotalValue() {
     double total = 0;
     for (var item in cartItem) {
       total += item.price * item.quantity;
@@ -49,7 +48,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
     return total;
   }
 
-  double calculateTotalCartValue() {
+  // ignore: unused_element
+  double _calculateTotalCartValue() {
     double total = 0.0;
     for (var item in cartItem) {
       total += item.price * item.quantity;
@@ -57,18 +57,18 @@ class _CheckoutPageState extends State<CheckoutPage> {
     return total;
   }
 
-  void addMultipleItemsToCart() {
+  void _addMultipleItemsToCart() {
     for (int i = 1; i <= 1; i++) {
       CartItem newItem = CartItem(
-        name: ' $i',
+        name: 'Cloths',
         price: 0.5,
         quantity: 0,
       );
-      addItemToCart(newItem);
+      _addItemToCart(newItem);
     }
   }
 
-  void addItemToCart(CartItem item) {
+  void _addItemToCart(CartItem item) {
     setState(() {
       cartItem.add(item);
     });
@@ -219,7 +219,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           },
                           child: InkWell(
                             onTap: () {
-                              addMultipleItemsToCart();
+                              _addMultipleItemsToCart();
                             },
                             child: const Text(
                               'Add Category',
@@ -390,7 +390,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                     fontWeight: FontWeight.w600),
                               ),
                               Text(
-                                '\$ ${calculateTotalValue()}',
+                                '\$ ${_calculateTotalValue()}',
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15),
                               )
@@ -408,7 +408,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             Navigator.push(
                               context,
                               PaymentPage.route(
-                                  name: '${calculateTotalValue()}'),
+                                  name: '${_calculateTotalValue()}'),
                             );
                           }),
                     ),

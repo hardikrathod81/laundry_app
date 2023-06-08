@@ -1,15 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/widgets/app_widget.dart';
 
-class HistoryPage extends StatelessWidget {
+class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
 
-  // static MaterialPageRoute<void> route() {
-  //   return MaterialPageRoute(
-  //       builder: (BuildContext context) => const HistoryPage());
-  // }
+  @override
+  State<HistoryPage> createState() => _HistoryPageState();
+}
 
+class HistoryItems {
+  HistoryItems(
+      {required this.color, required this.process, required this.name});
+
+  final Color color;
+  final String process;
+  final String name;
+}
+
+List<HistoryItems> _items = [
+  HistoryItems(
+      color: AppColors.yellow, process: "ongoing", name: 'Roumah Laundry'),
+  HistoryItems(
+      color: AppColors.green, process: 'completed', name: 'Happy Lundry'),
+  HistoryItems(
+      color: AppColors.green, process: 'completed', name: 'Happy Lundry'),
+  HistoryItems(
+      color: AppColors.green, process: 'completed', name: 'Happy Lundry'),
+  HistoryItems(
+      color: AppColors.green, process: 'completed', name: 'Happy Lundry'),
+];
+
+class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,177 +52,177 @@ class HistoryPage extends StatelessWidget {
             ),
             Expanded(
               child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 10),
-                      child: Container(
-                        height: 140,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: const Color(0xFFffffff)),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                const Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 20),
-                                      child: Text(
-                                        'Roumah Laundry',
-                                        style: TextStyle(
-                                            color: AppColors.black,
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 10),
-                                      child: Text(
-                                        'August 24,2022/07.25 pm',
-                                        style: TextStyle(
-                                            color: AppColors.gray,
-                                            fontSize: 13),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Container(
-                                  height: 20,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                      color: const Color(0xFFffca43),
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: const Center(
-                                    child: Text(
-                                      'Ongoing',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 12),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 20),
-                              child: Divider(
-                                thickness: 0.3,
-                                color: AppColors.gray,
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Row(
+                  child: ListView.builder(
+                shrinkWrap: true,
+                physics: const ScrollPhysics(),
+                itemCount: _items.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 10),
+                        child: Container(
+                          height: 140,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: AppColors.white),
+                          child: Column(
+                            children: [
+                              Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceAround,
                                 children: [
-                                  Row(
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Container(
-                                        height: 15,
-                                        width: 15,
-                                        decoration: BoxDecoration(
-                                            color: AppColors.blue,
-                                            borderRadius:
-                                                BorderRadius.circular(40)),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 20),
+                                        child: Text(
+                                          _items[index].name,
+                                          style: const TextStyle(
+                                              color: AppColors.black,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
-                                      const SizedBox(width: 5),
-                                      const Text(
-                                        'Washing',
-                                        style: TextStyle(
-                                            color: AppColors.black,
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.bold),
+                                      const Padding(
+                                        padding: EdgeInsets.only(top: 10),
+                                        child: Text(
+                                          'August 24,2022/07.25 pm',
+                                          style: TextStyle(
+                                              color: AppColors.gray,
+                                              fontSize: 13),
+                                        ),
                                       )
                                     ],
                                   ),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        height: 15,
-                                        width: 15,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: AppColors.blue,
-                                                width: 5),
-                                            borderRadius:
-                                                BorderRadius.circular(40)),
+                                  Container(
+                                    height: 20,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                        color: _items[index].color,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Center(
+                                      child: Text(
+                                        _items[index].process,
+                                        style: const TextStyle(
+                                            color: Colors.white, fontSize: 12),
                                       ),
-                                      const SizedBox(width: 5),
-                                      const Text(
-                                        'Cleaing',
-                                        style: TextStyle(
-                                            color: AppColors.black,
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        height: 15,
-                                        width: 15,
-                                        decoration: BoxDecoration(
-                                            color: AppColors.gray,
-                                            borderRadius:
-                                                BorderRadius.circular(40)),
-                                      ),
-                                      const SizedBox(width: 5),
-                                      const Text(
-                                        'Drying',
-                                        style: TextStyle(
-                                            color: AppColors.gray,
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        height: 15,
-                                        width: 15,
-                                        decoration: BoxDecoration(
-                                            color: AppColors.gray,
-                                            borderRadius:
-                                                BorderRadius.circular(40)),
-                                      ),
-                                      const SizedBox(width: 5),
-                                      const Text(
-                                        'Deliver',
-                                        style: TextStyle(
-                                            color: AppColors.gray,
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
+                                    ),
+                                  )
                                 ],
                               ),
-                            )
-                          ],
+                              const Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 20),
+                                child: Divider(
+                                  thickness: 0.3,
+                                  color: AppColors.gray,
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          height: 15,
+                                          width: 15,
+                                          decoration: BoxDecoration(
+                                              color: AppColors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(40)),
+                                        ),
+                                        const SizedBox(width: 5),
+                                        const Text(
+                                          'Washing',
+                                          style: TextStyle(
+                                              color: AppColors.black,
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          height: 15,
+                                          width: 15,
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: AppColors.blue,
+                                                  width: 5),
+                                              borderRadius:
+                                                  BorderRadius.circular(40)),
+                                        ),
+                                        const SizedBox(width: 5),
+                                        const Text(
+                                          'Cleaing',
+                                          style: TextStyle(
+                                              color: AppColors.black,
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          height: 15,
+                                          width: 15,
+                                          decoration: BoxDecoration(
+                                              color: AppColors.gray,
+                                              borderRadius:
+                                                  BorderRadius.circular(40)),
+                                        ),
+                                        const SizedBox(width: 5),
+                                        const Text(
+                                          'Drying',
+                                          style: TextStyle(
+                                              color: AppColors.gray,
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          height: 15,
+                                          width: 15,
+                                          decoration: BoxDecoration(
+                                              color: AppColors.gray,
+                                              borderRadius:
+                                                  BorderRadius.circular(40)),
+                                        ),
+                                        const SizedBox(width: 5),
+                                        const Text(
+                                          'Deliver',
+                                          style: TextStyle(
+                                              color: AppColors.gray,
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    ListView.builder(
-                      itemCount: 10,
-                      itemExtent: 160,
-                      shrinkWrap: true,
-                      physics: const ScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return const HistoryContainer();
-                      },
-                    ),
-                  ],
-                ),
-              ),
+                    ],
+                  );
+                },
+              )),
             )
           ],
         ),

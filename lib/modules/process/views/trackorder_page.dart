@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
-import 'package:laundry_app/modules/order/order.dart';
+import 'package:laundry_app/modules/process/views/process_page1.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
 
 class TrackOrderPage extends StatelessWidget {

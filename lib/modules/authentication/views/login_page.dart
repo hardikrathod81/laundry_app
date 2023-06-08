@@ -213,7 +213,7 @@ class _LoginPageState extends State<LoginPage> {
                                     children: [
                                       const SizedBox(width: 35),
                                       Image.asset(
-                                        AppImages.goole,
+                                        AppImages.google,
                                         height: 14,
                                         width: 30,
                                       ),

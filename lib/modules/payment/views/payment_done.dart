@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
 
-import 'package:laundry_app/modules/order/process/process_page1.dart';
+import 'package:laundry_app/modules/process/views/process_page1.dart';
 
 class PaymentDone extends StatelessWidget {
   const PaymentDone({super.key});

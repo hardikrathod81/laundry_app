@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
-import 'package:laundry_app/modules/order/checkout_page.dart';
+import 'package:laundry_app/modules/checkout/views/checkout_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

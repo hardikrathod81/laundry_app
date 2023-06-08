@@ -1,9 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
-import 'package:laundry_app/widgets/app_widget.dart';
+import 'package:laundry_app/core/app_images.dart';
+
+class ChatItems {
+  final String name;
+  ChatItems({required this.name});
+}
+
+List<ChatItems> _items = [
+  ChatItems(name: 'Dawny Jhonson'),
+  ChatItems(name: 'Helen Dope'),
+  ChatItems(name: 'Simmons Miles'),
+  ChatItems(name: 'Elien Brahman'),
+  ChatItems(name: 'Dawny Jhonson'),
+  ChatItems(name: 'Dawny Jhonson'),
+];
+
+class ChatPinItems {
+  final String name;
+  ChatPinItems({required this.name});
+}
+
+List<ChatPinItems> _pinitems = [
+  ChatPinItems(name: 'Lily Alesta'),
+  ChatPinItems(name: 'jhon Cornor'),
+];
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+  const ChatPage({
+    super.key,
+  });
 
   static MaterialPageRoute<void> route() {
     return MaterialPageRoute(
@@ -78,12 +104,52 @@ class ChatPage extends StatelessWidget {
                     ),
                     SizedBox(
                       child: ListView.builder(
-                        itemCount: 2,
+                        itemCount: _pinitems.length,
                         shrinkWrap: true,
                         itemExtent: 80,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
-                          return const ListtileContainer();
+                          return ListTile(
+                            style: ListTileStyle.list,
+                            contentPadding:
+                                const EdgeInsets.symmetric(horizontal: 25),
+                            onTap: () {},
+                            leading: const SizedBox(
+                              height: 60,
+                              width: 60,
+                              child: CircleAvatar(
+                                backgroundImage:
+                                    AssetImage(AppImages.profileImage),
+                              ),
+                            ),
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  _pinitems[index].name,
+                                  style: const TextStyle(
+                                      height: -1,
+                                      color: AppColors.black,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const Text(
+                                  '12:30 pm',
+                                  style: TextStyle(
+                                    height: -1.8,
+                                    color: AppColors.gray,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            subtitleTextStyle: const TextStyle(
+                                fontSize: 14, overflow: TextOverflow.ellipsis),
+                            subtitle: const Text(
+                              'Hello, Hope you`re doing well,thanks for good ',
+                            ),
+                            horizontalTitleGap: 10,
+                          );
                         },
                       ),
                     ),
@@ -98,11 +164,51 @@ class ChatPage extends StatelessWidget {
                     SizedBox(
                       child: ListView.builder(
                         itemExtent: 80,
-                        itemCount: 10,
+                        itemCount: _items.length,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
-                          return const ListtileContainer();
+                          return ListTile(
+                            style: ListTileStyle.list,
+                            contentPadding:
+                                const EdgeInsets.symmetric(horizontal: 25),
+                            onTap: () {},
+                            leading: const SizedBox(
+                              height: 60,
+                              width: 60,
+                              child: CircleAvatar(
+                                backgroundImage:
+                                    AssetImage(AppImages.profileImage),
+                              ),
+                            ),
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  _items[index].name,
+                                  style: const TextStyle(
+                                      height: -1,
+                                      color: AppColors.black,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const Text(
+                                  '12:30 pm',
+                                  style: TextStyle(
+                                    height: -1.8,
+                                    color: AppColors.gray,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            subtitleTextStyle: const TextStyle(
+                                fontSize: 14, overflow: TextOverflow.ellipsis),
+                            subtitle: const Text(
+                              'Hello, Hope you`re doing well,thanks for good ',
+                            ),
+                            horizontalTitleGap: 10,
+                          );
                         },
                       ),
                     ),

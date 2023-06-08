@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
 import 'package:laundry_app/widgets/app_widget.dart';
-import 'package:laundry_app/modules/order/process/trackorder_page.dart';
+import 'package:laundry_app/modules/process/views/trackorder_page.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
+import 'package:laundry_app/modules/process/widget/process_widgets.dart';
 
 class ProcessPage4 extends StatelessWidget {
   const ProcessPage4({super.key});
@@ -78,7 +79,7 @@ class ProcessPage4 extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                             image: const DecorationImage(
-                                image: AssetImage(AppImages.processedimage3)),
+                                image: AssetImage(AppImages.processedImage3)),
                             borderRadius: BorderRadius.circular(40)),
                       ),
                     ),
