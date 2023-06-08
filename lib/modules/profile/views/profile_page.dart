@@ -35,24 +35,24 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.whiteLight,
-      body: SafeArea(
+      appBar: AppBar(
+        centerTitle: false,
+        elevation: 0,
+        backgroundColor: AppColors.whiteLight,
+        title: const Padding(
+          padding: EdgeInsets.only(left: 10),
+          child: Text(
+            'Profile',
+            style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: AppColors.black),
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            const Row(
-              children: [
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: 30, right: 30, bottom: 20, top: 15),
-                  child: Text(
-                    'Profile',
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.black),
-                  ),
-                ),
-              ],
-            ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               child: CircleAvatar(
@@ -77,7 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ListView.builder(
               itemCount: _items.length,
               shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
+              physics: NeverScrollableScrollPhysics(),
               padding: const EdgeInsets.symmetric(horizontal: 30),
               itemBuilder: (context, index) {
                 return Padding(
