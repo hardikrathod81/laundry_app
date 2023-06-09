@@ -77,7 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ListView.builder(
               itemCount: _items.length,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               padding: const EdgeInsets.symmetric(horizontal: 30),
               itemBuilder: (context, index) {
                 return Padding(
