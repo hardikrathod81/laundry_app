@@ -5,6 +5,7 @@ import 'package:laundry_app/modules/authentication/authentication.dart';
 import 'package:laundry_app/modules/home/home.dart';
 import 'package:laundry_app/modules/home/views/root_page.dart';
 import 'package:laundry_app/widgets/app_buttons.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -173,18 +174,18 @@ class _LoginPageState extends State<LoginPage> {
                     child: AppButton(
                         value: 'Login',
                         onPressed: () {
-                          if (_key.currentState!.validate()) {
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              RootPage.route(),
-                              (route) => false,
-                            );
-                          }
+                          // if (_key.currentState!.validate()) {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            RootPage.route(),
+                            (route) => false,
+                          );
+                          // }
                         }),
                   ),
                   const Center(
                     child: Text(
-                      'Or login with account',
+                      'Or login with accadb shell dumpsys batteryount',
                       style: TextStyle(
                           color: AppColors.gray,
                           fontSize: 13,
@@ -201,7 +202,16 @@ class _LoginPageState extends State<LoginPage> {
                           Padding(
                             padding: const EdgeInsets.only(right: 20),
                             child: GestureDetector(
-                                onTap: () {},
+                                onTap: () async {
+                                  var url = Uri.http(
+                                      'jsonplaceholder.typicode.com',
+                                      '/posts/1');
+                                  var responce = await http.get(url);
+                                  debugPrint(
+                                      'Responce status :${responce.statusCode}');
+
+                                  debugPrint('Responce Body :${responce.body}');
+                                },
                                 child: Container(
                                   height:
                                       MediaQuery.sizeOf(context).height * 0.055,
@@ -227,7 +237,14 @@ class _LoginPageState extends State<LoginPage> {
                                 )),
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () async {
+                              var url = Uri.http('jsonplaceholder.typicode.com',
+                                  '/posts/1/comments');
+                              var responce = await http.get(url);
+                              debugPrint(
+                                  "responce status ${responce.statusCode}");
+                              debugPrint("responce body ${responce.body}");
+                            },
                             child: Container(
                               height: MediaQuery.sizeOf(context).height * 0.055,
                               width: MediaQuery.sizeOf(context).width * 0.4,

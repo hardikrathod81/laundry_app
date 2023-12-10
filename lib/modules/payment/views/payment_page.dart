@@ -96,6 +96,8 @@ class _PaymentPageState extends State<PaymentPage> {
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                           leading: Radio(
+                              fillColor: const MaterialStatePropertyAll(
+                                  AppColors.blue),
                               value: RadioButton.selfservice,
                               groupValue: _value,
                               onChanged: (value) {
@@ -121,6 +123,8 @@ class _PaymentPageState extends State<PaymentPage> {
                           leading: Padding(
                             padding: const EdgeInsets.only(bottom: 40),
                             child: Radio(
+                                fillColor: const MaterialStatePropertyAll(
+                                    AppColors.blue),
                                 value: RadioButton.deliveryService,
                                 groupValue: _value,
                                 onChanged: (value) {
@@ -185,6 +189,8 @@ class _PaymentPageState extends State<PaymentPage> {
                               ),
                             ),
                             trailing: Radio(
+                                fillColor: const MaterialStatePropertyAll(
+                                    AppColors.blue),
                                 value: PaymentRadioButton.applepay,
                                 groupValue: _paymentRadioButton,
                                 onChanged: (value) {
@@ -218,6 +224,8 @@ class _PaymentPageState extends State<PaymentPage> {
                               ),
                             ),
                             trailing: Radio(
+                                fillColor: const MaterialStatePropertyAll(
+                                    AppColors.blue),
                                 value: PaymentRadioButton.creditcard,
                                 groupValue: _paymentRadioButton,
                                 onChanged: (value) {
@@ -250,6 +258,8 @@ class _PaymentPageState extends State<PaymentPage> {
                               ),
                             ),
                             trailing: Radio(
+                                fillColor: const MaterialStatePropertyAll(
+                                    AppColors.blue),
                                 value: PaymentRadioButton.paypal,
                                 groupValue: _paymentRadioButton,
                                 onChanged: (value) {
@@ -260,7 +270,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                 }),
                           ),
                           const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 20),
+                            padding: EdgeInsets.symmetric(vertical: 18),
                             child: Text(
                               'Add new method',
                               style: TextStyle(

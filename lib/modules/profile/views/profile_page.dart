@@ -88,6 +88,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         borderRadius: BorderRadius.circular(10)),
                     tileColor: Colors.white,
                     leading: CircleAvatar(
+                      backgroundColor: AppColors.whiteLight,
                       foregroundColor: AppColors.gray,
                       child: Icon(
                         _items[index].icon,

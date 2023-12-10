@@ -1,16 +1,68 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
 import 'package:laundry_app/modules/process/widget/process_widgets.dart';
 import 'package:laundry_app/modules/process/views/process_page2.dart';
 
-class ProcessPage1 extends StatelessWidget {
+class User {
+  int age;
+  String name;
+  String surname;
+
+  User({required this.name, required this.age, required this.surname});
+}
+
+class ProcessPage1 extends StatefulWidget {
   const ProcessPage1({super.key});
 
   static MaterialPageRoute<void> route() {
     return MaterialPageRoute(
         settings: const RouteSettings(name: 'OrderPage'),
         builder: (BuildContext context) => const ProcessPage1());
+  }
+
+  @override
+  State<ProcessPage1> createState() => _ProcessPage1State();
+}
+
+class _ProcessPage1State extends State<ProcessPage1> {
+  final StreamController _countdownController = StreamController();
+  final StreamController<User> streamController = StreamController<User>();
+  Stream get countdownStream => _countdownController.stream;
+
+  User user = User(name: 'hardik', age: 22, surname: 'rathod');
+
+  incressAge() {
+    user.age++;
+    streamController.add(user);
+  }
+
+  addToName() {
+    user.name += 'A';
+    streamController.add(user);
+  }
+
+  void startCountDown(int seconds) {
+    int count = seconds;
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (count >= 0) {
+        _countdownController.add(count);
+        count--;
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    startCountDown(10);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -310,7 +362,47 @@ class ProcessPage1 extends StatelessWidget {
                   )
                 ],
               ),
-            )
+            ),
+            // StreamBuilder(
+            //     stream: countdownStream,
+            //     builder: (context, snapshot) {
+            //       if (snapshot.hasData) {
+            //         return Text(
+            //           '${snapshot.data}',
+            //           style: const TextStyle(fontSize: 20),
+            //         );
+            //       } else if (snapshot.connectionState ==
+            //           ConnectionState.waiting) {
+            //         return const CircularProgressIndicator();
+            //       } else if (snapshot.hasError) {
+            //         return ErrorWidget('erorr');
+            //       }
+            //       throw ErrorWidget("Error");
+            //     }),
+            // StreamBuilder(
+            //   initialData: user,
+            //   stream: streamController.stream,
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasData) {
+            //       return Column(children: [
+            //         Text(user.name),
+            //         Text(user.surname),
+            //         Text('${user.age}'),
+            //         FloatingActionButton(
+            //           onPressed: _incressAge,
+            //           child: const Text('incress age'),
+            //         ),
+            //         FloatingActionButton(
+            //           heroTag: null,
+            //           onPressed: _addToName,
+            //           child: const Text('incress name'),
+            //         )
+            //       ]);
+            //     }
+
+            //     return const CircularProgressIndicator();
+            //   },
+            // )
           ],
         ),
       ),

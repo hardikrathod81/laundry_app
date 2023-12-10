@@ -144,7 +144,9 @@ class ChatPage extends StatelessWidget {
                               ],
                             ),
                             subtitleTextStyle: const TextStyle(
-                                fontSize: 14, overflow: TextOverflow.ellipsis),
+                                fontSize: 14,
+                                overflow: TextOverflow.ellipsis,
+                                color: AppColors.lightGray),
                             subtitle: const Text(
                               'Hello, Hope you`re doing well,thanks for good ',
                             ),
@@ -203,7 +205,9 @@ class ChatPage extends StatelessWidget {
                               ],
                             ),
                             subtitleTextStyle: const TextStyle(
-                                fontSize: 14, overflow: TextOverflow.ellipsis),
+                                color: AppColors.lightGray,
+                                fontSize: 14,
+                                overflow: TextOverflow.ellipsis),
                             subtitle: const Text(
                               'Hello, Hope you`re doing well,thanks for good ',
                             ),

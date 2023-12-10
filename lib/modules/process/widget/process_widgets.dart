@@ -8,9 +8,9 @@ class Divide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Text(
-      '-------',
+      '----------',
       style: TextStyle(
-          fontSize: 17,
+          fontSize: 18,
           color: AppColors.lightGray,
           fontWeight: FontWeight.w100),
     );
