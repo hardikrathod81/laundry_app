@@ -31,7 +31,7 @@ class AppButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           value,
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16, color: AppColors.white),
         ),
       ),
     );

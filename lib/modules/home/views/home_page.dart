@@ -1,22 +1,47 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:laundry_app/core/app_colors.dart';
 import 'package:laundry_app/core/app_images.dart';
-import 'package:laundry_app/modules/order/checkout.dart';
+import 'package:laundry_app/modules/checkout/views/checkout_page.dart';
+import 'package:laundry_app/modules/home/views/themechange_page.dart';
+import 'package:laundry_app/services/Provider/provider.dart';
+import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
-  // static MaterialPageRoute<void> route() {
-  //   return MaterialPageRoute(
-  //     builder: (BuildContext context) => const HomePage(),
-  //   );
-  // }
+  static MaterialPageRoute<void> route() {
+    return MaterialPageRoute(
+      builder: (BuildContext context) => const HomePage(),
+    );
+  }
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    final counterProvidr = Provider.of<Count>(context, listen: false);
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      return counterProvidr.incrementCount();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xFFf2f5f8),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -65,7 +90,13 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ThemeChangePage(),
+                              ));
+                        },
                         icon: const Icon(Icons.notifications_none),
                       ),
                     )
@@ -150,7 +181,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       Image.asset(
-                        'assets/images/03.png',
+                        AppImages.washingMachineBlue,
                         fit: BoxFit.cover,
                         height: 140,
                       ),
@@ -184,6 +215,17 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
+              // Consumer<Count>(
+              //   builder: (context, value, child) {
+              //     return Text(
+              //       value.count.toString(),
+              //       style: const TextStyle(
+              //           fontFamily: 'inter',
+              //           fontSize: 20,
+              //           fontWeight: FontWeight.bold),
+              //     );
+              //   },
+              // ),
               const SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
@@ -197,12 +239,105 @@ class HomePage extends StatelessWidget {
                     return const LaundryItemWidget();
                   },
                 ),
-              )
+              ),
+              // AppButton(
+              //     value: 'Go To CarPage',
+              //     onPressed: () {
+              //       Navigator.push(context, CarPage.route());
+              //     }),
+              // ElevatedButton(
+              //     onPressed: () {
+              //       setState(() {});
+              //     },
+              //     child: const Text('Reload')),
+              // FutureBuilder(
+              //   future: getData1(),
+              //   builder: (context, snapshot) {
+              //     if (snapshot.connectionState == ConnectionState.waiting) {
+              //       return const Center(
+              //         child: CircularProgressIndicator(),
+              //       );
+              //     }
+
+              //     if (snapshot.hasError) {
+              //       return Center(
+              //         child: Text(snapshot.error.toString()),
+              //       );
+              //     }
+
+              //     if (snapshot.hasData) {
+              //       return ListView.builder(
+              //         shrinkWrap: true,
+              //         itemCount: snapshot.data!.length,
+              //         physics: const ScrollPhysics(),
+              //         itemBuilder: (context, index) {
+              //           return Padding(
+              //             padding: const EdgeInsets.all(8.0),
+              //             child: Container(
+              //               color: AppColors.blue,
+              //               child: Column(
+              //                 crossAxisAlignment: CrossAxisAlignment.start,
+              //                 children: [
+              //                   Text(
+              //                     " userId : ${snapshot.data![index].userId.toString()}",
+              //                     style: const TextStyle(fontSize: 17),
+              //                   ),
+              //                   Text(
+              //                     " id : ${snapshot.data![index].id.toString()}",
+              //                     style: const TextStyle(fontSize: 17),
+              //                   ),
+              //                   Text(
+              //                     "title is :${snapshot.data![index].title.toString()}",
+              //                     style: const TextStyle(fontSize: 17),
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //           );
+              //         },
+              //       );
+              //     } else {
+              //       return const Text('data');
+              //     }
+              //   },
+              // ),
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class User1 {
+  int userId;
+  int id;
+  String title;
+
+  User1({required this.userId, required this.id, required this.title});
+
+  factory User1.fromJson(Map<dynamic, dynamic> json) =>
+      User1(userId: json['userId'], id: json["id"], title: json["title"]);
+
+  Map<dynamic, dynamic> toJson() =>
+      {"userId": userId, "id": id, "title": title};
+}
+
+Future<List<User1>> getData1() async {
+  try {
+    var parse = Uri.parse('https://jsonplaceholder.typicode.com/todos');
+    final responce = await http.get(parse);
+
+    if (responce.statusCode == 200) {
+      var data = jsonDecode(responce.body.toString());
+      List<User1> user1 = List<User1>.from(data.map((x) => User1.fromJson(x)));
+      return user1;
+    } else {
+      return [];
+    }
+  } catch (d) {
+    debugPrint("Error $d");
+    throw Exception("Internet is not connected please check!");
   }
 }
 
@@ -242,29 +377,25 @@ class LaundryItemWidget extends StatelessWidget {
                     Positioned(
                       left: 8,
                       top: 8,
-                      child: SizedBox(
-                        height: 35,
-                        width: 70,
-                        child: ElevatedButton.icon(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40),
-                            ),
-                            backgroundColor: const Color(0xFFf4f7fa),
+                      child: ElevatedButton.icon(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40),
                           ),
-                          icon: const Icon(
-                            Icons.star_purple500_outlined,
-                            color: Colors.orange,
-                            size: 15,
-                          ),
-                          label: const Text(
-                            '5.0',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          backgroundColor: const Color(0xFFf4f7fa),
+                        ),
+                        icon: const Icon(
+                          Icons.star_purple500_outlined,
+                          color: Colors.orange,
+                          size: 15,
+                        ),
+                        label: const Text(
+                          '5.0',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
